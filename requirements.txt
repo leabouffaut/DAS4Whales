@@ -18,7 +18,7 @@ llvmlite==0.39.1
 matplotlib==3.5.3
 msgpack==1.0.5
 numba==0.56.4
-numpy==1.21.6
+numpy==1.22.0
 packaging==23.0
 Pillow==9.4.0
 platformdirs==3.1.1
