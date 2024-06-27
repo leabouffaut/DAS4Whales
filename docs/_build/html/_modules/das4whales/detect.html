@@ -1,0 +1,1093 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 7.3.7 and Furo 2024.05.06 -->
+        <title>das4whales.detect - DAS4Whales documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=387cc868" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #005f73;
+  --color-brand-content: #0a9396;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #e0fbfc;
+  --color-foreground-primary: #023047;
+  --color-foreground-secondary: #8ecae6;
+  --color-link: #ffb703;
+  --color-link--hover: #fb8500;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #0a9396;
+  --color-brand-content: #94d2bd;
+  --color-background-primary: #001219;
+  --color-background-secondary: #003049;
+  --color-foreground-primary: #e0fbfc;
+  --color-foreground-secondary: #94d2bd;
+  --color-link: #ffb703;
+  --color-link--hover: #fb8500;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #0a9396;
+  --color-brand-content: #94d2bd;
+  --color-background-primary: #001219;
+  --color-background-secondary: #003049;
+  --color-foreground-primary: #e0fbfc;
+  --color-foreground-secondary: #94d2bd;
+  --color-link: #ffb703;
+  --color-link--hover: #fb8500;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" /
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">DAS4Whales  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">DAS4Whales  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../src/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/das4whales.html">das4whales package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/data_handle.html">data_handle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/dsp.html">dsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/detect.html">detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/plot.html">plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/graph.html">Graph of Modules and Functions</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for das4whales.detect</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">detect.py - Detection module of DAS4Whales package</span>
+
+<span class="sd">This module provides functions for detecting whale calls in DAS strain data.</span>
+
+<span class="sd">Author: Quentin Goestchel</span>
+<span class="sd">Date: 2023-2024</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">librosa</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">das4whales.plot</span> <span class="kn">import</span> <span class="n">import_roseus</span> 
+<span class="kn">import</span> <span class="nn">concurrent.futures</span>
+
+<span class="c1">## Matched filter detection functions:</span>
+<div class="viewcode-block" id="gen_linear_chirp">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.gen_linear_chirp">[docs]</a>
+<span class="k">def</span> <span class="nf">gen_linear_chirp</span><span class="p">(</span><span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a linear chirp signal.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fmin : float</span>
+<span class="sd">        The starting frequency of the chirp signal.</span>
+<span class="sd">    fmax : float</span>
+<span class="sd">        The ending frequency of the chirp signal.</span>
+<span class="sd">    duration : float</span>
+<span class="sd">        The duration of the chirp signal in seconds.</span>
+<span class="sd">    sampling_rate : int</span>
+<span class="sd">        The sampling rate of the chirp signal in Hz.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The generated linear chirp signal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f0</span><span class="o">=</span><span class="n">fmax</span><span class="p">,</span> <span class="n">f1</span><span class="o">=</span><span class="n">fmin</span><span class="p">,</span> <span class="n">t1</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="gen_hyperbolic_chirp">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.gen_hyperbolic_chirp">[docs]</a>
+<span class="k">def</span> <span class="nf">gen_hyperbolic_chirp</span><span class="p">(</span><span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a hyperbolic chirp signal.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fmin : float</span>
+<span class="sd">        The starting frequency of the chirp signal.</span>
+<span class="sd">    fmax : float</span>
+<span class="sd">        The ending frequency of the chirp signal.</span>
+<span class="sd">    duration : float</span>
+<span class="sd">        The duration of the chirp signal in seconds.</span>
+<span class="sd">    sampling_rate : int</span>
+<span class="sd">        The sampling rate of the chirp signal in Hz.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The generated hyperbolic chirp signal.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">chirp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f0</span><span class="o">=</span><span class="n">fmax</span><span class="p">,</span> <span class="n">f1</span><span class="o">=</span><span class="n">fmin</span><span class="p">,</span> <span class="n">t1</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;hyperbolic&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span></div>
+
+
+
+<div class="viewcode-block" id="gen_template_fincall">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.gen_template_fincall">[docs]</a>
+<span class="k">def</span> <span class="nf">gen_template_fincall</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span> <span class="o">=</span> <span class="mf">15.</span><span class="p">,</span> <span class="n">fmax</span> <span class="o">=</span> <span class="mf">25.</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; generate template of a fin whale call</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    time : numpy.ndarray</span>
+<span class="sd">        time vector</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling rate in Hz</span>
+<span class="sd">    fmin : float, optional</span>
+<span class="sd">        Minimum frequency, by default 15</span>
+<span class="sd">    fmax : float, optional</span>
+<span class="sd">        Maximum frequency, by default 25</span>
+<span class="sd">    duration : float, optional</span>
+<span class="sd">        Duration of the chirp signal in seconds, by default 1.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 1 Hz frequency buffer to compensate the windowing</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">chirp_signal</span> <span class="o">=</span> <span class="n">gen_hyperbolic_chirp</span><span class="p">(</span><span class="n">fmin</span><span class="o">-</span><span class="n">df</span><span class="p">,</span> <span class="n">fmax</span> <span class="o">+</span> <span class="n">df</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
+    <span class="c1">#TODO: remove the padding and keep just the short window values</span>
+    <span class="k">if</span> <span class="n">window</span><span class="p">:</span>
+        <span class="n">template</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">chirp_signal</span><span class="p">)]</span> <span class="o">=</span> <span class="n">chirp_signal</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">hanning</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chirp_signal</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="n">template</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">chirp_signal</span><span class="p">)]</span> <span class="o">=</span> <span class="n">chirp_signal</span>
+    <span class="k">return</span> <span class="n">template</span></div>
+
+
+
+<div class="viewcode-block" id="shift_xcorr">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.shift_xcorr">[docs]</a>
+<span class="k">def</span> <span class="nf">shift_xcorr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;compute the shifted (positive lags only) cross correlation between two 1D arrays</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : numpy.ndarray</span>
+<span class="sd">        1D array containing signal</span>
+<span class="sd">    y : numpy.ndarray</span>
+<span class="sd">        1D array containing signal</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        1D array cross-correlation betweem x and y, only for positive lags</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;fft&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">corr</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> <span class="p">:]</span></div>
+
+
+
+<div class="viewcode-block" id="shift_nxcorr">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.shift_nxcorr">[docs]</a>
+<span class="k">def</span> <span class="nf">shift_nxcorr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the shifted (positive lags only) normalized cross-correlation with standard deviation normalization.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x : numpy.ndarray</span>
+<span class="sd">        first input signal.</span>
+<span class="sd">    y : numpy.ndarray</span>
+<span class="sd">        second input signal</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The normalized cross-correlation between the two signals</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="c1">#TODO: Modify to use with the short window values (mode = &#39;same&#39; instead of &#39;full&#39;)</span>
+    <span class="c1"># Compute cross-correlation</span>
+    <span class="n">cross_corr</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;fft&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Normalize using standard deviation</span>
+    <span class="n">normalized_corr</span> <span class="o">=</span> <span class="n">cross_corr</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">normalized_corr</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span> <span class="p">:]</span></div>
+
+
+
+<div class="viewcode-block" id="compute_cross_correlogram">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.compute_cross_correlogram">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_cross_correlogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">template</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the cross correlogram between the given data and template.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : numpy.ndarray</span>
+<span class="sd">        The input data array.</span>
+<span class="sd">    template : numpy.ndarray</span>
+<span class="sd">        The template array.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The cross correlogram array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="c1"># Normalize data along axis 1 by its maximum (peak normalization)</span>
+    <span class="n">norm_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="p">(</span><span class="n">template</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">template</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">template</span><span class="p">))</span>
+
+    <span class="c1"># Compute correlation along axis 1</span>
+    <span class="n">cross_correlogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">cross_correlogram</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">shift_xcorr</span><span class="p">(</span><span class="n">norm_data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">template</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cross_correlogram</span></div>
+
+
+
+<div class="viewcode-block" id="pick_times_env">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.pick_times_env">[docs]</a>
+<span class="k">def</span> <span class="nf">pick_times_env</span><span class="p">(</span><span class="n">corr_m</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="c1"># TODO: Parallelize this function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Detects the peak times in a correlation matrix.</span>
+
+<span class="sd">    This function takes a correlation matrix, computes the Hilbert transform of each correlation,</span>
+<span class="sd">    and detects the peak times based on a given threshold.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    corr_m : numpy.ndarray</span>
+<span class="sd">        The correlation matrix.</span>
+<span class="sd">    threshold : float, optional</span>
+<span class="sd">        The threshold value for peak detection. Defaults to 0.3.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of arrays, where each array contains the peak indexes for each correlation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">peaks_indexes_m</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">corr</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">corr_m</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing corr_m&quot;</span><span class="p">):</span>
+        <span class="n">peaks_indexes</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">hilbert</span><span class="p">(</span><span class="n">corr</span><span class="p">)),</span> <span class="n">prominence</span><span class="o">=</span><span class="n">threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Change distance in indexes, ex: &#39;distance=200&#39;</span>
+        <span class="n">peaks_indexes_m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">peaks_indexes</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">peaks_indexes_m</span></div>
+
+
+
+<div class="viewcode-block" id="process_corr">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.process_corr">[docs]</a>
+<span class="k">def</span> <span class="nf">process_corr</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Detects the peak times in a correlation serie, kernel for parallelization.</span>
+
+<span class="sd">    This function takes a correlation serie, computes the Hilbert transform of the correlation, and detects the peak times based on a given threshold.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    corr : np.ndarray</span>
+<span class="sd">        The correlogram array.</span>
+<span class="sd">    threshold : float, optional</span>
+<span class="sd">        The threshold value for peak detection. Defaults to 0.3.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        The peak indexes for the given correlation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">peaks_indexes</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">hilbert</span><span class="p">(</span><span class="n">corr</span><span class="p">)),</span> <span class="n">prominence</span><span class="o">=</span><span class="n">threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">peaks_indexes</span></div>
+
+
+
+<div class="viewcode-block" id="pick_times_par">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.pick_times_par">[docs]</a>
+<span class="k">def</span> <span class="nf">pick_times_par</span><span class="p">(</span><span class="n">corr_m</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Detects the peak times in a correlation matrix using parallel processing.</span>
+
+<span class="sd">    This function takes a correlation matrix, computes the Hilbert transform of each correlation,</span>
+<span class="sd">    and detects the peak times based on a given threshold using parallel processing.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    corr_m : numpy.ndarray</span>
+<span class="sd">        The correlation matrix.</span>
+<span class="sd">    threshold : float, optional</span>
+<span class="sd">        The threshold value for peak detection. Defaults to 0.3.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of arrays, where each array contains the peak indexes for each correlation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">peaks_indexes_m</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">ThreadPoolExecutor</span><span class="p">()</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">process_corr</span><span class="p">,</span> <span class="n">corr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span> <span class="k">for</span> <span class="n">corr</span> <span class="ow">in</span> <span class="n">corr_m</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">concurrent</span><span class="o">.</span><span class="n">futures</span><span class="o">.</span><span class="n">as_completed</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+            <span class="n">peaks_indexes_m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">result</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">peaks_indexes_m</span></div>
+
+
+
+<div class="viewcode-block" id="pick_times">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.pick_times">[docs]</a>
+<span class="k">def</span> <span class="nf">pick_times</span><span class="p">(</span><span class="n">corr_m</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Detects the peak times in a correlation matrix.</span>
+
+<span class="sd">    This function takes a correlation matrix, computes the Hilbert transform of each correlation,</span>
+<span class="sd">    and detects the peak times based on a given threshold.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    corr_m : numpy.ndarray</span>
+<span class="sd">        The correlation matrix.</span>
+<span class="sd">    threshold : float, optional</span>
+<span class="sd">        The threshold value for peak detection. Defaults to 0.3.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    list</span>
+<span class="sd">        A list of arrays, where each array contains the peak indexes for each correlation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">peaks_indexes_m</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">corr</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">corr_m</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing corr_m&quot;</span><span class="p">):</span>
+        <span class="n">peaks_indexes</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="n">threshold</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">peaks_indexes_m</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">peaks_indexes</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">peaks_indexes_m</span></div>
+
+
+
+<div class="viewcode-block" id="convert_pick_times">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.convert_pick_times">[docs]</a>
+<span class="k">def</span> <span class="nf">convert_pick_times</span><span class="p">(</span><span class="n">peaks_indexes_m</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert pick times from a list of lists to a numpy array.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    peaks_indexes_m : list of lists</span>
+<span class="sd">        A list of lists containing the pick times.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        A numpy array containing a tuple (time index, spatial index) of the converted pick times.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">peaks_indexes_tp</span> <span class="o">=</span> <span class="p">([],</span> <span class="p">[])</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">peaks_indexes_m</span><span class="p">)):</span>
+        <span class="n">nb_el</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks_indexes_m</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nb_el</span><span class="p">):</span>
+            <span class="n">peaks_indexes_tp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">peaks_indexes_m</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">peaks_indexes_tp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+
+    <span class="n">peaks_indexes_tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">peaks_indexes_tp</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">peaks_indexes_tp</span></div>
+
+
+
+<div class="viewcode-block" id="select_picked_times">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.select_picked_times">[docs]</a>
+<span class="k">def</span> <span class="nf">select_picked_times</span><span class="p">(</span><span class="n">idx_tp</span><span class="p">,</span> <span class="n">tstart</span><span class="p">,</span> <span class="n">tend</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Select the picked times within a given time range.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    idx_tp : numpy.ndarray</span>
+<span class="sd">        The time and spatial indexes of the picked times.</span>
+<span class="sd">    tstart : float</span>
+<span class="sd">        The starting time of the time range [s].</span>
+<span class="sd">    tend : float</span>
+<span class="sd">        The ending time of the time range [s].</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        The sampling rate of the data.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The selected picked times within the given time range (time index, spatial index).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">idx_tp_selected</span> <span class="o">=</span> <span class="p">(</span><span class="n">idx_tp</span><span class="p">[</span><span class="mi">0</span><span class="p">][(</span><span class="n">idx_tp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">tstart</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">idx_tp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">tend</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)],</span>
+                        <span class="n">idx_tp</span><span class="p">[</span><span class="mi">1</span><span class="p">][(</span><span class="n">idx_tp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">tstart</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">idx_tp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">tend</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)])</span>
+
+    <span class="k">return</span> <span class="n">idx_tp_selected</span></div>
+
+
+<span class="c1">## Spectrogram correlation functions:</span>
+
+<div class="viewcode-block" id="get_sliced_nspectrogram">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.get_sliced_nspectrogram">[docs]</a>
+<span class="k">def</span> <span class="nf">get_sliced_nspectrogram</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">nperseg</span><span class="p">,</span> <span class="n">nhop</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the sliced non-stationary spectrogram of a given trace.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace : numpy.ndarray</span>
+<span class="sd">        The input trace signal.</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        The sampling rate of the trace signal.</span>
+<span class="sd">    fmin : float</span>
+<span class="sd">        The minimum frequency of interest.</span>
+<span class="sd">    fmax : float</span>
+<span class="sd">        The maximum frequency of interest.</span>
+<span class="sd">    nperseg : int</span>
+<span class="sd">        The length of each segment for the spectrogram computation.</span>
+<span class="sd">    nhop : int</span>
+<span class="sd">        The number of samples to advance between segments.</span>
+<span class="sd">    plotflag : bool, optional</span>
+<span class="sd">        Whether to plot the spectrogram, defaults to False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    spectrogram : numpy.ndarray</span>
+<span class="sd">        The computed spectrogram.</span>
+<span class="sd">    ff : ndarray</span>
+<span class="sd">        The frequency values of the spectrogram.</span>
+<span class="sd">    tt : ndarray</span>
+<span class="sd">        The time values of the spectrogram.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This function computes the non-stationary spectrogram of a given trace signal.</span>
+<span class="sd">    The spectrogram is computed using the Short-Time Fourier Transform (STFT) with</span>
+<span class="sd">    a specified segment length and hop size. The resulting spectrogram is then sliced</span>
+<span class="sd">    between the specified minimum and maximum frequencies of interest.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; trace = np.random.randn(1000)</span>
+<span class="sd">    &gt;&gt;&gt; fs = 1000</span>
+<span class="sd">    &gt;&gt;&gt; fmin = 10</span>
+<span class="sd">    &gt;&gt;&gt; fmax = 100</span>
+<span class="sd">    &gt;&gt;&gt; nperseg = 256</span>
+<span class="sd">    &gt;&gt;&gt; nhop = 128</span>
+<span class="sd">    &gt;&gt;&gt; spectrogram, ff, tt = get_sliced_nspectrogram(trace, fs, fmin, fmax, nperseg, nhop, plotflag=True)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">spectrogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">librosa</span><span class="o">.</span><span class="n">stft</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">trace</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="n">nperseg</span><span class="p">,</span> <span class="n">hop_length</span><span class="o">=</span><span class="n">nhop</span><span class="p">))</span>
+    <span class="c1"># Axis</span>
+    <span class="n">nf</span><span class="p">,</span> <span class="n">nt</span> <span class="o">=</span> <span class="n">spectrogram</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span><span class="o">/</span><span class="n">fs</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">nt</span><span class="p">)</span>
+    <span class="n">ff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">nf</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">spectrogram</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">spectrogram</span><span class="p">)</span>
+
+    <span class="c1"># Slice the spectrogram betweem fmin and fmax</span>
+    <span class="n">ff_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">ff</span> <span class="o">&gt;=</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ff</span> <span class="o">&lt;=</span> <span class="n">fmax</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">ff_idx</span><span class="p">]</span>
+    <span class="n">ff</span> <span class="o">=</span> <span class="n">ff</span><span class="p">[</span><span class="n">ff_idx</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">plotflag</span><span class="p">:</span>
+        <span class="n">roseus</span> <span class="o">=</span> <span class="n">import_roseus</span><span class="p">()</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+        <span class="n">shw</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">p</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">p</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">roseus</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># Colorbar</span>
+        <span class="n">bar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">shw</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.015</span><span class="p">)</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Normalized magnitude [-]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">tt</span></div>
+
+
+
+<div class="viewcode-block" id="buildkernel">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.buildkernel">[docs]</a>
+<span class="k">def</span> <span class="nf">buildkernel</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">bdwdth</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">samp</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate kernel and plot.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    f0 : float</span>
+<span class="sd">        Starting frequency.</span>
+<span class="sd">    f1 : float</span>
+<span class="sd">        Ending frequency.</span>
+<span class="sd">    bdwdth : float</span>
+<span class="sd">        Frequency width of call.</span>
+<span class="sd">    dur : float</span>
+<span class="sd">        Call length (seconds).</span>
+<span class="sd">    f : np.array</span>
+<span class="sd">        Vector of frequencies returned from plotwav.</span>
+<span class="sd">    t : np.array</span>
+<span class="sd">        Vector of times returned from plotwav.</span>
+<span class="sd">    samp : float</span>
+<span class="sd">        Sample rate.</span>
+<span class="sd">    plotflag : bool, optional</span>
+<span class="sd">        If True, plots kernel. If False, no plot. Default is False.</span>
+<span class="sd">    kernel_lims : tuple, optional</span>
+<span class="sd">        Tuple of minimum kernel range and maximum kernel range. Default is finKernelLims.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tvec : numpy.array</span>
+<span class="sd">        Vector of kernel times.</span>
+<span class="sd">    fvec_sub : numpy.array</span>
+<span class="sd">        Vector of kernel frequencies.</span>
+<span class="sd">    BlueKernel : 2-d numpy.array</span>
+<span class="sd">        Matrix of kernel values.</span>
+
+<span class="sd">    Key variables:</span>
+<span class="sd">    -------------</span>
+<span class="sd">    tvec : numpy.array</span>
+<span class="sd">        Kernel times (seconds).</span>
+<span class="sd">    fvec : numpy.array</span>
+<span class="sd">        Kernel frequencies.</span>
+<span class="sd">    BlueKernel : numpy.array</span>
+<span class="sd">        Matrix of kernel values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># create a time vector of the same length as the call, with the same number of points as the spectrogram</span>
+    <span class="n">tvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">((</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">dur</span><span class="o">*</span><span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&gt;</span> <span class="n">dur</span><span class="o">*</span><span class="mi">7</span><span class="p">))))</span> 
+    <span class="c1"># another way: int(dur * fs / (nperseg * (1-overlap_pct)) + 1)</span>
+    <span class="c1"># define frequency span of kernel to match spectrogram</span>
+    <span class="n">fvec</span> <span class="o">=</span> <span class="n">f</span> 
+    <span class="c1"># preallocate kernel array</span>
+    <span class="n">Kdist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">fvec</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">tvec</span><span class="p">)))</span> 
+    <span class="n">ker_min</span><span class="p">,</span> <span class="n">ker_max</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span>
+    
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tvec</span><span class="p">)):</span>
+        <span class="c1"># calculate hat function that is centered on linearly decreasing</span>
+        <span class="c1"># frequency values for each time in tvec</span>
+        <span class="c1"># Linearly decreasing frequency values</span>
+        <span class="c1"># x = fvec - (f0 + (tvec[j] / dur) * (f1 - f0))</span>
+        <span class="c1"># Hyperbolic decreasing frequency values</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">fvec</span> <span class="o">-</span> <span class="p">(</span><span class="n">f0</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">dur</span> <span class="o">/</span> <span class="p">((</span><span class="n">f0</span> <span class="o">-</span> <span class="n">f1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">tvec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">+</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">dur</span><span class="p">))</span>
+        <span class="n">Kval</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">bdwdth</span> <span class="o">*</span> <span class="n">bdwdth</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">bdwdth</span> <span class="o">*</span> <span class="n">bdwdth</span><span class="p">)))</span>
+        <span class="c1"># store hat function values in preallocated array</span>
+        <span class="n">Kdist</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">Kval</span> 
+    <span class="n">BlueKernel</span> <span class="o">=</span> <span class="n">Kdist</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">hanning</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tvec</span><span class="p">))[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="c1"># freq_inds = np.where(np.logical_and(fvec &gt;= ker_min, fvec &lt;= ker_max))</span>
+    
+    <span class="c1"># fvec_sub = fvec[freq_inds]</span>
+    <span class="c1"># BlueKernel = BlueKernel_full[freq_inds, :][0]</span>
+    
+    <span class="k">if</span> <span class="n">plotflag</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">tvec</span><span class="p">,</span> <span class="n">fvec</span><span class="p">,</span> <span class="n">BlueKernel</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdBu_r&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">BlueKernel</span><span class="p">)),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">BlueKernel</span><span class="p">)),)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">fvec</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">fvec</span><span class="p">)])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">clim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ker_min</span><span class="p">,</span> <span class="n">ker_max</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fin whale call kernel&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;t [s]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+        
+    <span class="k">return</span> <span class="n">tvec</span><span class="p">,</span> <span class="n">fvec</span><span class="p">,</span> <span class="n">BlueKernel</span></div>
+
+
+
+<div class="viewcode-block" id="buildkernel_from_template">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.buildkernel_from_template">[docs]</a>
+<span class="k">def</span> <span class="nf">buildkernel_from_template</span><span class="p">(</span><span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">nperseg</span><span class="p">,</span> <span class="n">nhop</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build a kernel from a template.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fmin : float</span>
+<span class="sd">        The minimum frequency of interest.</span>
+<span class="sd">    fmax : float</span>
+<span class="sd">        The maximum frequency of interest.</span>
+<span class="sd">    dur : float</span>
+<span class="sd">        The duration of the kernel in seconds.</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        The sampling rate of the kernel in Hz.</span>
+<span class="sd">    nperseg : int</span>
+<span class="sd">        The length of each segment for the spectrogram computation.</span>
+<span class="sd">    nhop : int</span>
+<span class="sd">        The number of samples to advance between segments.</span>
+<span class="sd">    plotflag : bool, optional</span>
+<span class="sd">        Whether to plot the kernel, defaults to False.  </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The computed kernel.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">template</span> <span class="o">=</span> <span class="n">gen_hyperbolic_chirp</span><span class="p">(</span><span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">dur</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">template</span> <span class="o">*=</span> <span class="n">np</span><span class="o">.</span><span class="n">hanning</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">template</span><span class="p">))</span>
+    <span class="n">spectro</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">tt</span> <span class="o">=</span> <span class="n">get_sliced_nspectrogram</span><span class="p">(</span><span class="n">template</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">nperseg</span><span class="p">,</span> <span class="n">nhop</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">plotflag</span><span class="p">:</span>
+        <span class="n">roseus</span> <span class="o">=</span> <span class="n">import_roseus</span><span class="p">()</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+        <span class="n">shw</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">spectro</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">roseus</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="c1"># Colorbar</span>
+        <span class="n">bar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">shw</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.015</span><span class="p">)</span>
+        <span class="n">bar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Normalized magnitude [-]&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dur</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">spectro</span></div>
+
+
+
+<div class="viewcode-block" id="nxcorr2d">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.nxcorr2d">[docs]</a>
+<span class="k">def</span> <span class="nf">nxcorr2d</span><span class="p">(</span><span class="n">spectro</span><span class="p">,</span> <span class="n">kernel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the normalized cross-correlation between a spectrogram and a kernel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    spectro : numpy.ndarray</span>
+<span class="sd">        The spectrogram array.</span>
+<span class="sd">    kernel : numpy.ndarray</span>
+<span class="sd">        The kernel array.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The maximum correlation values along the time axis.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The normalized cross-correlation is calculated using `scipy.signal.correlate2d`.</span>
+<span class="sd">    The correlation values are normalized by dividing by the standard deviation of the spectrogram and the kernel,</span>
+<span class="sd">    multiplied by the number of columns in the spectrogram.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; spectro = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])</span>
+<span class="sd">    &gt;&gt;&gt; kernel = np.array([[1, 0], [0, 1]])</span>
+<span class="sd">    &gt;&gt;&gt; nxcorr2d(spectro, kernel)</span>
+<span class="sd">    array([0.        , 0.33333333, 0.66666667])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">correlation</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">correlate</span><span class="p">(</span><span class="n">spectro</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;fft&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">spectro</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span> <span class="o">*</span> <span class="n">spectro</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">maxcorr_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">correlation</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">maxcorr_t</span></div>
+
+
+
+<div class="viewcode-block" id="xcorr2d">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.xcorr2d">[docs]</a>
+<span class="k">def</span> <span class="nf">xcorr2d</span><span class="p">(</span><span class="n">spectro</span><span class="p">,</span> <span class="n">kernel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the 2D cross-correlation between a spectrogram and a kernel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    spectro : numpy.ndarray</span>
+<span class="sd">        The input spectrogram array [frequency x time].</span>
+
+<span class="sd">    kernel : numpy.ndarray</span>
+<span class="sd">        The kernel array used for cross-correlation [frequency x time].</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        The resulting cross-correlation array.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">correlation</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">fftconvolve</span><span class="p">(</span><span class="n">spectro</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">maxcorr_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">correlation</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">maxcorr_t</span><span class="p">[</span><span class="n">maxcorr_t</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">maxcorr_t</span> <span class="o">/=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">spectro</span><span class="p">)</span> <span class="o">*</span> <span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">maxcorr_t</span></div>
+
+
+
+<div class="viewcode-block" id="xcorr">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.xcorr">[docs]</a>
+<span class="k">def</span> <span class="nf">xcorr</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">Sxx</span><span class="p">,</span> <span class="n">tvec</span><span class="p">,</span> <span class="n">fvec</span><span class="p">,</span> <span class="n">BlueKernel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Cross-correlate kernel with spectrogram</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    t : np.array</span>
+<span class="sd">        Vector of times returned from plotwav</span>
+<span class="sd">    f : np.array</span>
+<span class="sd">        Vector of frequencies returned from plotwav</span>
+<span class="sd">    Sxx : np.array</span>
+<span class="sd">        2-D array of spectrogram amplitudes</span>
+<span class="sd">    tvec : np.array</span>
+<span class="sd">        Vector of times of kernel</span>
+<span class="sd">    fvec : np.array</span>
+<span class="sd">        Vector of frequencies of kernel</span>
+<span class="sd">    BlueKernel : np.array</span>
+<span class="sd">        2-D array of kernel amplitudes</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    t_scale : numpy.array</span>
+<span class="sd">        Vector of correlation lags</span>
+<span class="sd">    CorrVal : numpy.array</span>
+<span class="sd">        Vector of correlation values</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tvec_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">tvec</span><span class="p">)</span>
+    <span class="n">fvec_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">fvec</span><span class="p">)</span>
+    <span class="n">CorrVal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">tvec_size</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">corrchunk</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">fvec_size</span><span class="p">,</span> <span class="n">tvec_size</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">ind1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">tvec_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">ind2</span> <span class="o">=</span> <span class="n">ind1</span> <span class="o">+</span> <span class="n">tvec_size</span>
+        <span class="n">corrchunk</span> <span class="o">=</span> <span class="n">Sxx</span><span class="p">[:</span><span class="n">fvec_size</span><span class="p">,</span> <span class="n">ind1</span><span class="p">:</span><span class="n">ind2</span><span class="p">]</span>
+        <span class="n">CorrVal</span><span class="p">[</span><span class="n">ind1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">BlueKernel</span> <span class="o">*</span> <span class="n">corrchunk</span><span class="p">)</span>
+
+    <span class="n">CorrVal</span> <span class="o">/=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">Sxx</span><span class="p">)</span><span class="o">*</span><span class="n">tvec_size</span><span class="p">)</span>
+    <span class="n">CorrVal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CorrVal</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CorrVal</span><span class="p">[</span><span class="n">CorrVal</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">t_scale</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">tvec_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">tvec_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))]</span>
+    <span class="k">return</span>  <span class="p">[</span><span class="n">t_scale</span><span class="p">,</span> <span class="n">CorrVal</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="compute_cross_correlogram_spectrocorr">
+<a class="viewcode-back" href="../../src/detect.html#das4whales.detect.compute_cross_correlogram_spectrocorr">[docs]</a>
+<span class="k">def</span> <span class="nf">compute_cross_correlogram_spectrocorr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">flims</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">win_size</span><span class="p">,</span> <span class="n">overlap_pct</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the cross-correlogram via spectrogram correlation.</span>
+
+<span class="sd">    This function computes the cross-correlogram spectrocorr between the input data and a kernel.</span>
+<span class="sd">    The cross-correlogram spectrocorr is a measure of similarity between the spectrogram of the input data</span>
+<span class="sd">    and the kernel.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : ndarray</span>
+<span class="sd">        Input data array of shape (n, m), where n is the number of samples and m is the number of channels.</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency of the input data.</span>
+<span class="sd">    flims : tuple</span>
+<span class="sd">        Frequency limits (fmin, fmax) for the spectrogram computation.</span>
+<span class="sd">    kernel : dict</span>
+<span class="sd">        Dictionary containing the kernel parameters (f0, f1, duration, bandwidth).</span>
+<span class="sd">    win_size : float</span>
+<span class="sd">        Window size in seconds for the spectrogram computation.</span>
+<span class="sd">    overlap_pct : float</span>
+<span class="sd">        Percentage of overlap between consecutive windows for the spectrogram computation.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    cross_correlogram : ndarray</span>
+<span class="sd">        Cross-correlogram spectrocorr array of shape (n, p), where n is the number of samples and p is the number of time bins.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">norm_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">nperseg</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">win_size</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">nhop</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">nperseg</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">overlap_pct</span><span class="p">)))</span>
+    <span class="n">noverlap</span> <span class="o">=</span> <span class="n">nperseg</span> <span class="o">-</span> <span class="n">nhop</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;nperseg: </span><span class="si">{</span><span class="n">nperseg</span><span class="si">}</span><span class="s1">, noverlap: </span><span class="si">{</span><span class="n">noverlap</span><span class="si">}</span><span class="s1">, hop_length: </span><span class="si">{</span><span class="n">nhop</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>   
+    <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span> <span class="o">=</span> <span class="n">flims</span>
+
+    <span class="c1"># get call kernel attributes</span>
+    <span class="n">f1</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">[</span><span class="s2">&quot;f1&quot;</span><span class="p">]</span> 
+    <span class="n">f0</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">[</span><span class="s2">&quot;f0&quot;</span><span class="p">]</span> 
+    <span class="n">duration</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">[</span><span class="s2">&quot;dur&quot;</span><span class="p">]</span>
+    <span class="n">bandwidth</span> <span class="o">=</span> <span class="n">kernel</span><span class="p">[</span><span class="s2">&quot;bdwidth&quot;</span><span class="p">]</span>
+
+    <span class="c1"># check that hat function is within frequency range of spectrogram</span>
+    <span class="k">if</span> <span class="n">fmax</span><span class="o">-</span><span class="n">f1</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">bandwidth</span><span class="p">:</span>
+        <span class="n">fmax</span> <span class="o">=</span> <span class="n">f1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">bandwidth</span>
+    <span class="k">if</span> <span class="n">f0</span><span class="o">-</span><span class="n">fmin</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">bandwidth</span><span class="p">:</span> 
+        <span class="n">fmin</span> <span class="o">=</span> <span class="n">f0</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">bandwidth</span>
+
+    <span class="c1"># Compute correlation along axis 1</span>
+    <span class="n">spectro</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">tt</span> <span class="o">=</span> <span class="n">get_sliced_nspectrogram</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">nperseg</span><span class="p">,</span> <span class="n">nhop</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># TODO: Try weighting the spectrogram with the Cable frequency response (channel, bearing dependant)</span>
+    <span class="n">cross_correlogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">tt</span><span class="p">)))</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">kernel</span> <span class="o">=</span> <span class="n">buildkernel</span><span class="p">(</span><span class="n">f0</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">bandwidth</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">ff</span><span class="p">,</span> <span class="n">tt</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># kernel = buildkernel_from_template(fmin, fmax, duration, fs, nperseg, nhop, plotflag=False)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">spectro</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_sliced_nspectrogram</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:],</span> <span class="n">fs</span><span class="p">,</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">fmax</span><span class="p">,</span> <span class="n">nperseg</span><span class="p">,</span> <span class="n">nhop</span><span class="p">,</span> <span class="n">plotflag</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">cross_correlogram</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">xcorr2d</span><span class="p">(</span><span class="n">spectro</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">cross_correlogram</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Bouffaut &amp; Goestchel
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

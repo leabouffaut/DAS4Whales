@@ -21,6 +21,22 @@ from tqdm import tqdm
 
 
 def scale_pixels(img):
+    """Scale the pixel values of an image.
+
+    This function scales the pixel values of an image to the range [0, 1].
+
+    Parameters
+    ----------
+    img : numpy.ndarray
+        The input image.
+
+    Returns
+    -------
+    numpy.ndarray
+        The scaled image.
+
+    """
+
     img = (img - img.min())/(img.max() - img.min())
     return img
 
@@ -41,6 +57,7 @@ def trace2image(trace):
         The image.
 
     """
+
     image = np.abs(sp.hilbert(trace, axis=1)) / np.std(trace, axis=1, keepdims=True)
     image = scale_pixels(image) * 255
     return image
@@ -68,6 +85,7 @@ def angle_fromspeed(c0, fs, dx, selected_channels):
         The angle from the speed of sound.
 
     """
+
     ratio = c0 / (fs * dx * selected_channels[2])
     print('Detection speed ratio: ', ratio)
 
@@ -300,19 +318,77 @@ def detect_long_lines(img):
 
 
 def bilateral_filter(img, diameter, sigma_color, sigma_space):
+    """Apply bilateral filter to an image.
+
+    This function applies bilateral filter to an image.
+
+    Parameters
+    ----------
+    img : numpy.ndarray
+        The input image.
+    diameter : int
+        Diameter of each pixel neighborhood that is used during filtering.
+    sigma_color : float
+        Filter sigma in the color space.
+    sigma_space : float
+        Filter sigma in the coordinate space.
+
+    Returns
+    -------
+    numpy.ndarray
+        The filtered image.
+    
+    """
+
     # Apply bilateral filter to the image
     filtered_img = cv2.bilateralFilter(img, diameter, sigma_color, sigma_space)
     return filtered_img
 
 
 def compute_radon_transform(image, theta=None):
+    """Compute the Radon transform of an image.
+
+    This function computes the Radon transform of an image.
+
+    Parameters
+    ----------
+    image : numpy.ndarray
+        The input image.
+    theta : numpy.ndarray, optional (default=None)   
+        The projection angles (in degrees).
+
+    Returns
+    -------
+    numpy.ndarray
+        The Radon transform of the image.
+
+    """
     # Compute the Radon transform
     radon_image = radon(image, theta=theta, circle=False)
     return radon_image
 
 
 def gaussian_filter(img, size, sigma):
-    # Apply Gaussian filter to the image
+    """Apply Gaussian filter to an image.
+
+    This function applies Gaussian filter to an image.
+
+    Parameters
+    ----------
+    img : numpy.ndarray
+        The input image.
+    size : int
+        The size of the filter.
+    sigma : float
+        The standard deviation of the filter.
+
+    Returns
+    -------
+    numpy.ndarray
+        The filtered image.
+
+    """
+
     filtered_img = cv2.GaussianBlur(img, (size, size), sigma)
     return filtered_img
 
@@ -347,6 +423,26 @@ def binning(image, ft, fx):
 
 
 def apply_smooth_mask(array, mask, sigma=1.5):
+    """Apply a smooth mask to an array.
+
+    This function applies a smooth mask to an array.
+
+    Parameters
+    ----------
+    array : numpy.ndarray
+        The input array.
+    mask : numpy.ndarray
+        The mask to apply.
+    sigma : float, optional (default=1.5)
+        The standard deviation of the Gaussian filter applied to the mask.
+
+    Returns
+    -------
+    numpy.ndarray
+        The masked array.
+
+    """
+
     # Apply Gaussian blur to the mask to smooth edges
     smoothed_mask = scipy_gaussian_filter(mask.astype(float), sigma=sigma, mode='reflect')
     

@@ -1,0 +1,1348 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
+
+    <!-- Generated with Sphinx 7.3.7 and Furo 2024.05.06 -->
+        <title>das4whales.dsp - DAS4Whales documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=387cc868" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: #005f73;
+  --color-brand-content: #0a9396;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #e0fbfc;
+  --color-foreground-primary: #023047;
+  --color-foreground-secondary: #8ecae6;
+  --color-link: #ffb703;
+  --color-link--hover: #fb8500;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #0a9396;
+  --color-brand-content: #94d2bd;
+  --color-background-primary: #001219;
+  --color-background-secondary: #003049;
+  --color-foreground-primary: #e0fbfc;
+  --color-foreground-secondary: #94d2bd;
+  --color-link: #ffb703;
+  --color-link--hover: #fb8500;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #0a9396;
+  --color-brand-content: #94d2bd;
+  --color-background-primary: #001219;
+  --color-background-secondary: #003049;
+  --color-foreground-primary: #e0fbfc;
+  --color-foreground-secondary: #94d2bd;
+  --color-link: #ffb703;
+  --color-link--hover: #fb8500;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" /
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">DAS4Whales  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">DAS4Whales  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../src/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Modules documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/das4whales.html">das4whales package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/data_handle.html">data_handle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/dsp.html">dsp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/detect.html">detect</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/plot.html">plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../src/graph.html">Graph of Modules and Functions</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>Source code for das4whales.dsp</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">dsp.py - Digital Signal Processing module for DAS4Whales</span>
+
+<span class="sd">This module provides various functions for digital signal processing of DAS strain data.</span>
+
+<span class="sd">Authors: Léa Bouffaut, Quentin Goestchel</span>
+<span class="sd">Date: 2023-2024</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">librosa</span>
+<span class="kn">import</span> <span class="nn">sparse</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+<span class="kn">from</span> <span class="nn">numpy.fft</span> <span class="kn">import</span> <span class="n">fft2</span><span class="p">,</span> <span class="n">fftfreq</span><span class="p">,</span> <span class="n">fftshift</span><span class="p">,</span> <span class="n">ifft2</span><span class="p">,</span> <span class="n">ifftshift</span>
+
+<span class="c1"># Transformations</span>
+<div class="viewcode-block" id="get_fx">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.get_fx">[docs]</a>
+<span class="k">def</span> <span class="nf">get_fx</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">nfft</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply a fast Fourier transform (FFT) to each channel of the strain data matrix.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace : np.ndarray</span>
+<span class="sd">        A 2D array of shape (channel, time sample) containing the strain data in the spatio-temporal domain.</span>
+<span class="sd">    nfft : int</span>
+<span class="sd">        Number of time samples used for the FFT.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray</span>
+<span class="sd">        A 2D array of shape (channel, freq. sample) containing the strain data in the spatio-spectral domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">fx</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">nfft</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">fx</span> <span class="o">/=</span> <span class="n">nfft</span>
+    <span class="n">fx</span> <span class="o">*=</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">9</span>
+    <span class="k">return</span> <span class="n">fx</span></div>
+
+
+
+<div class="viewcode-block" id="get_spectrogram">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.get_spectrogram">[docs]</a>
+<span class="k">def</span> <span class="nf">get_spectrogram</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">nfft</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">overlap_pct</span><span class="o">=</span><span class="mf">0.8</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the spectrogram of a single channel</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    waveform : np.ndarray</span>
+<span class="sd">        Single channel temporal signal.</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        The sampling frequency (Hz).</span>
+<span class="sd">    nfft : int, optional</span>
+<span class="sd">        Number of time samples used for the STFT. Default is 128.</span>
+<span class="sd">    overlap_pct : float, optional</span>
+<span class="sd">        Percentage of overlap in the spectrogram. Default is 0.8.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    p : np.ndarray</span>
+<span class="sd">        Spectrogram in dB scale (normalized by max).</span>
+<span class="sd">    tt : np.ndarray</span>
+<span class="sd">        Time vector.</span>
+<span class="sd">    ff : ndarray</span>
+<span class="sd">        Frequency vector.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spectrogram</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">librosa</span><span class="o">.</span><span class="n">stft</span><span class="p">(</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">waveform</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="n">nfft</span><span class="p">,</span>
+        <span class="n">hop_length</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">nfft</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">overlap_pct</span><span class="p">)))))</span>
+
+    <span class="c1"># Axis</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">spectrogram</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="n">spectrogram</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">waveform</span><span class="p">)</span><span class="o">/</span><span class="n">fs</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+    <span class="n">ff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">spectrogram</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">spectrogram</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span> <span class="n">tt</span><span class="p">,</span> <span class="n">ff</span></div>
+
+
+
+<span class="c1"># Filters</span>
+<span class="c1"># f-k filters design functions</span>
+<span class="c1">#TODO: uniformize and make a global function with choice of filter</span>
+<span class="c1"># Version from MATLAB code</span>
+<div class="viewcode-block" id="fk_filter_design">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.fk_filter_design">[docs]</a>
+<span class="k">def</span> <span class="nf">fk_filter_design</span><span class="p">(</span><span class="n">trace_shape</span><span class="p">,</span> <span class="n">selected_channels</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cs_min</span><span class="o">=</span><span class="mi">1400</span><span class="p">,</span> <span class="n">cp_min</span><span class="o">=</span><span class="mi">1450</span><span class="p">,</span> <span class="n">cp_max</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">cs_max</span><span class="o">=</span><span class="mi">3500</span><span class="p">):</span>
+    <span class="c1"># TODO: mark as deprecated, use hybrid_filter_design instead</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Designs a f-k filter for DAS strain data</span>
+<span class="sd">    Keeps by default data with propagation speed [1450-3400] m/s</span>
+
+<span class="sd">    The transition band is inspired and adapted from Yi Lin&#39;s matlab fk function</span>
+<span class="sd">    https://github.com/nicklinyi/seismic_utils/blob/master/fkfilter.m</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace_shape : tuple</span>
+<span class="sd">        A tuple with the dimensions of the strain data in the spatio-temporal domain such as</span>
+<span class="sd">        trace_shape = (trace.shape[0], trace.shape[1]) where dimensions are [channel x time sample].</span>
+<span class="sd">    selected_channels : list</span>
+<span class="sd">        A list of the selected channels number [start, end, step].</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        Channel spacing (m).</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency (Hz).</span>
+<span class="sd">    cs_min : float, optional</span>
+<span class="sd">        Minimum selected sound speeds for the f-k passband filtering (m/s). Default is 1400 m/s.</span>
+<span class="sd">    cp_min : float, optional</span>
+<span class="sd">        Minimum selected sound speed for the f-k stopband filtering, values should frame [c_min and c_max] (m/s).</span>
+<span class="sd">        Default is 1450 m/s.</span>
+<span class="sd">    cp_max : float, optional</span>
+<span class="sd">        Maximum selected sound speeds for the f-k passband filtering (m/s). Default is 3400 m/s.</span>
+<span class="sd">    cs_max : float, optional</span>
+<span class="sd">        Maximum selected sound speed for the f-k stopband filtering, values should frame [c_min and c_max] (m/s).</span>
+<span class="sd">        Default is 3500 m/s.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fk_filter_matrix : ndarray</span>
+<span class="sd">        A [channel x time sample] numpy array containing the f-k-filter.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Note that the chosen ChannelStep limits the bandwidth frequency obtained with fmax = 1500/ChannelStep*dx</span>
+
+    <span class="c1"># Get the dimensions of the trace data</span>
+    <span class="n">nnx</span><span class="p">,</span> <span class="n">nns</span> <span class="o">=</span> <span class="n">trace_shape</span>
+
+    <span class="c1"># Define frequency and wavenumber axes</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nns</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">knum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nnx</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">selected_channels</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">dx</span><span class="p">))</span>
+
+    <span class="c1"># Supress/hide the warning</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">seterr</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create the filter</span>
+    <span class="c1"># Wave speed is the ratio between the frequency and the wavenumber</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Going through wavenumbers</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">)):</span>
+        <span class="c1"># Taking care of very small wavenumber to avoid 0 division</span>
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">knum</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mf">0.005</span><span class="p">:</span>
+            <span class="n">fk_filter_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filter_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;F&#39;</span><span class="p">)</span>
+            <span class="n">speed</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">freq</span> <span class="o">/</span> <span class="n">knum</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="c1"># Filter transition band, ramping up from cs_min to cp_min</span>
+            <span class="n">selected_speed_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">speed</span> <span class="o">&gt;=</span> <span class="n">cs_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">speed</span> <span class="o">&lt;=</span> <span class="n">cp_min</span><span class="p">))</span>
+            <span class="n">filter_line</span><span class="p">[</span><span class="n">selected_speed_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span>
+                                                      <span class="p">(</span><span class="n">speed</span><span class="p">[</span><span class="n">selected_speed_mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">cs_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">cp_min</span> <span class="o">-</span> <span class="n">cs_min</span><span class="p">))</span>
+            <span class="c1"># Filter transition band, going down from cp_max to cs_max</span>
+            <span class="n">selected_speed_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">speed</span> <span class="o">&gt;=</span> <span class="n">cp_max</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">speed</span> <span class="o">&lt;=</span> <span class="n">cs_max</span><span class="p">))</span>
+            <span class="n">filter_line</span><span class="p">[</span><span class="n">selected_speed_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span>
+                                                          <span class="p">(</span><span class="n">speed</span><span class="p">[</span><span class="n">selected_speed_mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">cp_max</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">cs_max</span> <span class="o">-</span> <span class="n">cp_max</span><span class="p">))</span>
+            <span class="c1"># Stopband</span>
+            <span class="n">filter_line</span><span class="p">[</span><span class="n">speed</span> <span class="o">&gt;=</span> <span class="n">cs_max</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">filter_line</span><span class="p">[</span><span class="n">speed</span> <span class="o">&lt;</span> <span class="n">cs_min</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># Fill the filter matrix</span>
+            <span class="n">fk_filter_matrix</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">filter_line</span>
+    
+    <span class="c1"># Display the filter</span>
+    <span class="c1"># import matplotlib.pyplot as plt</span>
+    <span class="c1"># plt.figure()</span>
+    <span class="c1"># plt.imshow(fk_filter_matrix, extent=[min(freq),max(freq),min(knum),max(knum)],aspect=&#39;auto&#39;)</span>
+    <span class="c1"># plt.figure()</span>
+    <span class="c1"># plt.plot(freq, fk_filter_matrix[2000, :])</span>
+    <span class="c1"># plt.show()</span>
+
+    <span class="k">return</span> <span class="n">fk_filter_matrix</span></div>
+
+
+<span class="c1"># Infinite wave speed filter, sine tapers</span>
+<div class="viewcode-block" id="hybrid_filter_design">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.hybrid_filter_design">[docs]</a>
+<span class="k">def</span> <span class="nf">hybrid_filter_design</span><span class="p">(</span><span class="n">trace_shape</span><span class="p">,</span> <span class="n">selected_channels</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cs_min</span><span class="o">=</span><span class="mf">1400.</span><span class="p">,</span> <span class="n">cp_min</span><span class="o">=</span><span class="mf">1450.</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="mf">15.</span><span class="p">,</span> <span class="n">fmax</span><span class="o">=</span><span class="mf">25.</span><span class="p">,</span> <span class="n">display_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Designs an infinite wave speed bandpass f-k hybrid filter for DAS strain data</span>
+<span class="sd">        Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace_shape : tuple</span>
+<span class="sd">        tuple with the dimensions of the strain data in the spatio-temporal domain such as trace_shape = (trace.shape[0], trace.shape[1]) where dimensions are [channel x time sample]</span>
+<span class="sd">    selected_channels : list</span>
+<span class="sd">        list of the selected channels number  [start, end, step]</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        channel spacing (m)</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling frequency (Hz)</span>
+<span class="sd">    cs_min : float, optional</span>
+<span class="sd">        lower minimum selected sound speeds for the f-k highpass filtering (m/s), by default 1400 m/s</span>
+<span class="sd">    cp_min : float, optional</span>
+<span class="sd">        higher minimum selected sound speed for the f-k highpass filtering, by default 1450 m/s</span>
+<span class="sd">    fmin : float, optional</span>
+<span class="sd">        minimum frequency for the passband, by default 15</span>
+<span class="sd">    fmax : float, optional</span>
+<span class="sd">        maximum frequency for the passband, by default 25</span>
+<span class="sd">    display_filter : bool, optional</span>
+<span class="sd">        option for filter display, by default False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fk_filter_matrix : array-like</span>
+<span class="sd">        [channel x time sample] a scipy sparse array containing the f-k-filter</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="c1"># Note that the chosen ChannelStep limits the bandwidth frequency obtained with fmax = 1500/ChannelStep*dx</span>
+    <span class="c1"># Get the dimensions of the trace data</span>
+    <span class="n">nnx</span><span class="p">,</span> <span class="n">nns</span> <span class="o">=</span> <span class="n">trace_shape</span>
+
+    <span class="c1"># Define frequency and wavenumber axes</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nns</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">knum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nnx</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">selected_channels</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">dx</span><span class="p">))</span>
+
+    <span class="c1"># 1st step: frequency bandpass filtering</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+    <span class="c1"># set the width of the frequency range tapers</span>
+    <span class="n">df_taper</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># Hz</span>
+    <span class="c1"># Apply it to the frequencies of interest</span>
+    <span class="n">fpmax</span> <span class="o">=</span> <span class="n">fmax</span> <span class="o">+</span> <span class="n">df_taper</span>
+    <span class="n">fpmin</span> <span class="o">=</span> <span class="n">fmin</span> <span class="o">-</span> <span class="n">df_taper</span>
+    <span class="c1"># Find the corresponding indexes</span>
+    <span class="n">fmin_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmin</span><span class="p">)</span>
+    <span class="n">fmax_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmax</span><span class="p">)</span>
+
+    <span class="c1"># Filter transition band, ramping up from fpmin to fmin</span>
+    <span class="n">rup_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">freq</span> <span class="o">&lt;=</span> <span class="n">fmin</span><span class="p">))</span>
+    <span class="n">H</span><span class="p">[</span><span class="n">rup_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="n">rup_mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">fpmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">fmin</span> <span class="o">-</span> <span class="n">fpmin</span><span class="p">))</span>
+    <span class="c1"># Filter passband</span>
+    <span class="n">H</span><span class="p">[(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">freq</span> <span class="o">&lt;=</span> <span class="n">fmax</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="c1"># Filter transition band, ramping down from fmax to fpmax</span>
+    <span class="n">rdo_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fmax</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">freq</span> <span class="o">&lt;=</span> <span class="n">fpmax</span><span class="p">))</span>
+    <span class="n">H</span><span class="p">[</span><span class="n">rdo_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="n">rdo_mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">fmax</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">fmax</span> <span class="o">-</span> <span class="n">fpmax</span><span class="p">))</span>
+
+    <span class="c1"># Replicate the bandpass frequency response along the k-axis to initialize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># 2nd step: filtering waves whose speeds are below cmin, with a taper between csmin and cpmin</span>
+    <span class="c1"># Going through frequencies between the considered range of the bandpass filter</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fmin_idx</span><span class="p">,</span> <span class="n">fmax_idx</span><span class="p">):</span>
+        <span class="c1"># Initiating filter column to zeros</span>
+        <span class="n">filter_col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span>
+
+        <span class="c1"># Filter transition bands, ramping up from cs_min to cp_min</span>
+        <span class="n">ks</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cs_min</span>
+        <span class="n">kp</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cp_min</span>
+        
+        <span class="c1"># Avoid zero division</span>
+        <span class="k">if</span> <span class="n">ks</span> <span class="o">!=</span> <span class="n">kp</span><span class="p">:</span>
+            <span class="c1"># f+ k+ quadrant                                             </span>
+            <span class="n">selected_k_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">knum</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="n">ks</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">kp</span><span class="p">))</span>
+            <span class="n">filter_col</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">knum</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">+</span> <span class="n">ks</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">kp</span> <span class="o">-</span> <span class="n">ks</span><span class="p">))</span>
+
+            <span class="c1"># f+ k- quadrant</span>
+            <span class="n">selected_k_mask</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="n">knum</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="n">ks</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">-</span><span class="n">knum</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">kp</span><span class="p">))</span>
+            <span class="n">filter_col</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">knum</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">ks</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">kp</span> <span class="o">-</span> <span class="n">ks</span><span class="p">))</span>
+
+        <span class="c1"># Passband</span>
+        <span class="c1"># Positive frequencies (kp is positive):</span>
+        <span class="n">filter_col</span><span class="p">[(</span><span class="n">knum</span> <span class="o">&lt;</span> <span class="n">kp</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">kp</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Fill the filter matrix by multiplication </span>
+        <span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">filter_col</span> 
+
+    <span class="c1"># Symmetrize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span>
+
+    <span class="c1"># Filter display, optional</span>
+    <span class="k">if</span> <span class="n">display_filter</span><span class="p">:</span> 
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+        <span class="c1"># Context manager for the plot (to avoid changing the global settings)</span>
+        <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc_context</span><span class="p">():</span>
+            <span class="c1"># Change the font sizes for plots (if needed)</span>
+            <span class="c1"># plt.rc(&#39;font&#39;, size=20) </span>
+            <span class="c1"># plt.rc(&#39;xtick&#39;, labelsize=16)  </span>
+            <span class="c1"># plt.rc(&#39;ytick&#39;, labelsize=16)</span>
+
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+            <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+            <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            
+            <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">fk_filter_matrix</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">)])</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+            <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="n">fmin_idx</span> <span class="o">+</span> <span class="mi">250</span><span class="p">],</span> <span class="n">knum</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)])</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick_right</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">sparse</span><span class="o">.</span><span class="n">COO</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span></div>
+
+
+<span class="c1"># Non-infinite wave speed filter, sine tapers</span>
+<div class="viewcode-block" id="hybrid_ninf_filter_design">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.hybrid_ninf_filter_design">[docs]</a>
+<span class="k">def</span> <span class="nf">hybrid_ninf_filter_design</span><span class="p">(</span><span class="n">trace_shape</span><span class="p">,</span> <span class="n">selected_channels</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cs_min</span><span class="o">=</span><span class="mf">1400.</span><span class="p">,</span> <span class="n">cp_min</span><span class="o">=</span><span class="mf">1450.</span><span class="p">,</span> <span class="n">cp_max</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">cs_max</span><span class="o">=</span><span class="mi">3500</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="mf">15.</span><span class="p">,</span> <span class="n">fmax</span><span class="o">=</span><span class="mf">25.</span><span class="p">,</span> <span class="n">display_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Designs a bandpass f-k hybrid filter for DAS strain data</span>
+<span class="sd">        Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace_shape : tuple</span>
+<span class="sd">        tuple with the dimensions of the strain data in the spatio-temporal domain such as trace_shape = (trace.shape[0], trace.shape[1]) where dimensions are [channel x time sample]</span>
+<span class="sd">    selected_channels : list</span>
+<span class="sd">        list of the selected channels number  [start, end, step]</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        channel spacing (m)</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling frequency (Hz)</span>
+<span class="sd">    cs_min : float, optional</span>
+<span class="sd">        lower minimum selected sound speeds for the f-k highpass filtering (m/s), by default 1400 m/s</span>
+<span class="sd">    cp_min : float, optional</span>
+<span class="sd">        higher minimum selected sound speed for the f-k highpass filtering, by default 1450 m/s</span>
+<span class="sd">    fmin : float, optional</span>
+<span class="sd">        minimum frequency for the passband, by default 15</span>
+<span class="sd">    fmax : float, optional</span>
+<span class="sd">        maximum frequency for the passband, by default 25</span>
+<span class="sd">    display_filter : bool, optional</span>
+<span class="sd">        option for filter display, by default False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fk_filter_matrix : array-like</span>
+<span class="sd">        [channel x time sample] a scipy sparse array containing the f-k-filter</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="c1"># Note that the chosen ChannelStep limits the bandwidth frequency obtained with fmax = 1500/ChannelStep*dx</span>
+    <span class="c1"># Get the dimensions of the trace data</span>
+    <span class="n">nnx</span><span class="p">,</span> <span class="n">nns</span> <span class="o">=</span> <span class="n">trace_shape</span>
+
+    <span class="c1"># Define frequency and wavenumber axes</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nns</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">knum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nnx</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">selected_channels</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">dx</span><span class="p">))</span>
+
+    <span class="c1"># Replace the sine/cosine tapers by butterworth filters</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="n">fmin</span><span class="o">/</span><span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">fmax</span><span class="o">/</span><span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">)],</span> <span class="s1">&#39;bp&#39;</span><span class="p">)</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">freqz</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">worN</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="c1"># 1st step: frequency bandpass filtering</span>
+    <span class="c1"># H = np.zeros_like(freq)</span>
+    <span class="c1"># set the width of the frequency range tapers, since butterworth filters are smooth</span>
+    <span class="n">df_taper</span> <span class="o">=</span> <span class="mi">14</span> <span class="c1"># Hz</span>
+    <span class="c1"># Apply it to the frequencies of interest</span>
+    <span class="n">fpmax</span> <span class="o">=</span> <span class="n">fmax</span> <span class="o">+</span> <span class="n">df_taper</span>
+    <span class="n">fpmin</span> <span class="o">=</span> <span class="n">fmin</span> <span class="o">-</span> <span class="n">df_taper</span>
+    <span class="c1"># Find the corresponding indexes</span>
+    <span class="n">fmin_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmin</span><span class="p">)</span>
+    <span class="n">fmax_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmax</span><span class="p">)</span>
+
+    <span class="c1"># Filter transition band, ramping up from fpmin to fmin, replaced by butterworth filter</span>
+    <span class="c1"># rup_mask = ((freq &gt;= fpmin) &amp; (freq &lt;= fmin))</span>
+    <span class="c1"># H[rup_mask] = np.sin(0.5 * np.pi * (freq[rup_mask] - fpmin) / (fmin - fpmin))</span>
+    <span class="c1"># # Filter passband</span>
+    <span class="c1"># H[(freq &gt;= fmin) &amp; (freq &lt;= fmax)] = 1</span>
+    <span class="c1"># # Filter transition band, ramping down from fmax to fpmax</span>
+    <span class="c1"># rdo_mask = ((freq &gt;= fmax) &amp; (freq &lt;= fpmax))</span>
+    <span class="c1"># H[rdo_mask] = np.cos(0.5 * np.pi * (freq[rdo_mask] - fmax) / (fmax - fpmax))</span>
+
+    <span class="c1"># Replicate the bandpass frequency response along the k-axis to initialize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># 2nd step: filtering waves whose speeds are below cmin, with a taper between csmin and cpmin</span>
+    <span class="c1"># Going through frequencies between the considered range of the bandpass filter</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fmin_idx</span><span class="p">,</span> <span class="n">fmax_idx</span><span class="p">):</span>
+        <span class="c1"># Initiating filter column to zeros</span>
+        <span class="n">filter_col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span>
+
+        <span class="c1"># Filter transition bands, ramping up from cs_min to cp_min</span>
+        <span class="n">ks_min</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cs_max</span>
+        <span class="n">kp_min</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cp_max</span>
+
+        <span class="n">ks_max</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cs_min</span>
+        <span class="n">kp_max</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cp_min</span>
+        
+        <span class="c1"># Avoid zero division</span>
+        <span class="k">if</span> <span class="n">ks_min</span> <span class="o">!=</span> <span class="n">kp_min</span><span class="p">:</span>
+            <span class="c1"># f+ k+ quadrant ramp up                                         </span>
+            <span class="n">selected_k_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">knum</span> <span class="o">&gt;=</span> <span class="n">ks_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&lt;=</span> <span class="n">kp_min</span><span class="p">))</span>
+            <span class="n">filter_col</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">knum</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">ks_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">kp_min</span> <span class="o">-</span> <span class="n">ks_min</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">ks_max</span> <span class="o">!=</span> <span class="n">kp_max</span><span class="p">:</span>
+            <span class="c1"># f+ k- quadrant ramp down</span>
+            <span class="n">selected_k_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">knum</span> <span class="o">&gt;=</span> <span class="n">kp_max</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&lt;=</span> <span class="n">ks_max</span><span class="p">))</span>
+            <span class="n">filter_col</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">knum</span><span class="p">[</span><span class="n">selected_k_mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">ks_max</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ks_max</span> <span class="o">-</span> <span class="n">kp_max</span><span class="p">))</span>
+
+        <span class="c1"># Passband</span>
+        <span class="c1"># Positive frequencies (kp_min is positive):</span>
+        <span class="n">filter_col</span><span class="p">[(</span><span class="n">knum</span> <span class="o">&gt;</span> <span class="n">kp_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&lt;</span> <span class="n">kp_max</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Fill the filter matrix by multiplication </span>
+        <span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">filter_col</span> 
+
+    <span class="c1"># Symmetrize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span>
+
+    <span class="c1"># Filter display, optional</span>
+    <span class="k">if</span> <span class="n">display_filter</span><span class="p">:</span> 
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+        <span class="c1"># Context manager for the plot (to avoid changing the global settings)</span>
+        <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc_context</span><span class="p">():</span>
+            <span class="c1"># Change the font sizes for plots (if needed)</span>
+            <span class="c1"># plt.rc(&#39;font&#39;, size=20) </span>
+            <span class="c1"># plt.rc(&#39;xtick&#39;, labelsize=16)  </span>
+            <span class="c1"># plt.rc(&#39;ytick&#39;, labelsize=16)</span>
+
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+            <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+            <span class="c1"># Matrix display</span>
+            <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">knum</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">420</span><span class="p">],</span> <span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">freq</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1500</span><span class="p">],</span> <span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+            <span class="c1"># colorbar</span>
+            <span class="c1"># cbar = plt.colorbar(ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect=&#39;auto&#39;, origin=&#39;lower&#39;))</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            
+            <span class="c1"># Frequency slice display</span>
+            <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">fk_filter_matrix</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">420</span><span class="p">,</span> <span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">)])</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+            <span class="c1"># Wavenumber slice display</span>
+            <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="nb">len</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1500</span><span class="p">],</span> <span class="n">knum</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)])</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick_right</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+            
+    <span class="k">return</span> <span class="n">sparse</span><span class="o">.</span><span class="n">COO</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span></div>
+
+
+<span class="c1"># Infinite wave speed filter, gaussian tapers</span>
+<div class="viewcode-block" id="hybrid_gs_filter_design">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.hybrid_gs_filter_design">[docs]</a>
+<span class="k">def</span> <span class="nf">hybrid_gs_filter_design</span><span class="p">(</span><span class="n">trace_shape</span><span class="p">,</span> <span class="n">selected_channels</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cs_min</span><span class="o">=</span><span class="mf">1400.</span><span class="p">,</span> <span class="n">cp_min</span><span class="o">=</span><span class="mf">1450.</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="mf">15.</span><span class="p">,</span> <span class="n">fmax</span><span class="o">=</span><span class="mf">25.</span><span class="p">,</span> <span class="n">display_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Designs a bandpass f-k hybrid filter for DAS strain data</span>
+<span class="sd">        Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace_shape : tuple</span>
+<span class="sd">        tuple with the dimensions of the strain data in the spatio-temporal domain such as trace_shape = (trace.shape[0], trace.shape[1]) where dimensions are [channel x time sample]</span>
+<span class="sd">    selected_channels : list</span>
+<span class="sd">        list of the selected channels number  [start, end, step]</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        channel spacing (m)</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling frequency (Hz)</span>
+<span class="sd">    cs_min : float, optional</span>
+<span class="sd">        lower minimum selected sound speeds for the f-k highpass filtering (m/s), by default 1400 m/s</span>
+<span class="sd">    cp_min : float, optional</span>
+<span class="sd">        higher minimum selected sound speed for the f-k highpass filtering, by default 1450 m/s</span>
+<span class="sd">    fmin : float, optional</span>
+<span class="sd">        minimum frequency for the passband, by default 15</span>
+<span class="sd">    fmax : float, optional</span>
+<span class="sd">        maximum frequency for the passband, by default 25</span>
+<span class="sd">    display_filter : bool, optional</span>
+<span class="sd">        option for filter display, by default False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fk_filter_matrix : array-like</span>
+<span class="sd">        [channel x time sample] a scipy sparse array containing the f-k-filter</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="c1"># Note that the chosen ChannelStep limits the bandwidth frequency obtained with fmax = 1500/ChannelStep*dx</span>
+    <span class="c1"># Get the dimensions of the trace data</span>
+    <span class="n">nnx</span><span class="p">,</span> <span class="n">nns</span> <span class="o">=</span> <span class="n">trace_shape</span>
+
+    <span class="c1"># Define frequency and wavenumber axes</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nns</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">knum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nnx</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">selected_channels</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">dx</span><span class="p">))</span>
+
+    <span class="c1"># 1st step: frequency bandpass filtering</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+    <span class="c1"># set the width of the frequency range tapers</span>
+    <span class="n">df_taper</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># Hz</span>
+    <span class="c1"># Apply it to the frequencies of interest</span>
+    <span class="n">fpmax</span> <span class="o">=</span> <span class="n">fmax</span> <span class="o">+</span> <span class="n">df_taper</span>
+    <span class="n">fpmin</span> <span class="o">=</span> <span class="n">fmin</span> <span class="o">-</span> <span class="n">df_taper</span>
+    <span class="c1"># Find the corresponding indexes</span>
+    <span class="n">fmin_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmin</span><span class="p">)</span>
+    <span class="n">fmax_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmax</span><span class="p">)</span>
+
+    <span class="c1"># Filter passband</span>
+    <span class="n">H</span><span class="p">[(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">freq</span> <span class="o">&lt;=</span> <span class="n">fmax</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Replicate the bandpass frequency response along the k-axis to initialize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># 2nd step: filtering waves whose speeds are below cmin, with a taper between csmin and cpmin</span>
+    <span class="c1"># Going through frequencies between the considered range of the bandpass filter</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fmin_idx</span><span class="p">,</span> <span class="n">fmax_idx</span><span class="p">):</span>
+        <span class="c1"># Initiating filter column to zeros</span>
+        <span class="n">filter_col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span>
+
+        <span class="c1"># Filter transition bands, ramping up from cs_min to cp_min</span>
+        <span class="n">ks</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cs_min</span>
+        <span class="n">kp</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cp_min</span>
+        
+        <span class="c1"># Avoid zero division</span>
+        <span class="k">if</span> <span class="n">ks</span> <span class="o">!=</span> <span class="n">kp</span><span class="p">:</span>
+            <span class="c1"># f+ k+ quadrant                                             </span>
+            <span class="n">selected_k_mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">knum</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="n">ks</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">kp</span><span class="p">))</span>
+
+            <span class="c1"># f+ k- quadrant</span>
+            <span class="n">selected_k_mask</span> <span class="o">=</span> <span class="p">((</span><span class="o">-</span><span class="n">knum</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="n">ks</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">-</span><span class="n">knum</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">kp</span><span class="p">))</span>
+
+        <span class="c1"># Passband</span>
+        <span class="c1"># Positive frequencies (kp is positive):</span>
+        <span class="n">filter_col</span><span class="p">[(</span><span class="n">knum</span> <span class="o">&lt;</span> <span class="n">kp</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">kp</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Fill the filter matrix by multiplication </span>
+        <span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">filter_col</span> 
+
+    <span class="c1"># Symmetrize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># Filter display, optional</span>
+    <span class="k">if</span> <span class="n">display_filter</span><span class="p">:</span> 
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+        <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc_context</span><span class="p">():</span>
+            <span class="c1"># Change the font sizes for plots (if needed)</span>
+            <span class="c1"># plt.rc(&#39;font&#39;, size=20) </span>
+            <span class="c1"># plt.rc(&#39;xtick&#39;, labelsize=16)  </span>
+            <span class="c1"># plt.rc(&#39;ytick&#39;, labelsize=16)</span>
+
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+            <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+            <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            
+            <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">fk_filter_matrix</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">)])</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+            <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="n">fmin_idx</span> <span class="o">+</span> <span class="mi">250</span><span class="p">],</span> <span class="n">knum</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)])</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick_right</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">sparse</span><span class="o">.</span><span class="n">COO</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span></div>
+
+
+<span class="c1"># Non-infinite wave speed filter, gaussian tapers</span>
+<div class="viewcode-block" id="hybrid_ninf_gs_filter_design">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.hybrid_ninf_gs_filter_design">[docs]</a>
+<span class="k">def</span> <span class="nf">hybrid_ninf_gs_filter_design</span><span class="p">(</span><span class="n">trace_shape</span><span class="p">,</span> <span class="n">selected_channels</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cs_min</span><span class="o">=</span><span class="mf">1400.</span><span class="p">,</span> <span class="n">cp_min</span><span class="o">=</span><span class="mf">1450.</span><span class="p">,</span> <span class="n">cp_max</span><span class="o">=</span><span class="mi">3400</span><span class="p">,</span> <span class="n">cs_max</span><span class="o">=</span><span class="mi">3500</span><span class="p">,</span> <span class="n">fmin</span><span class="o">=</span><span class="mf">15.</span><span class="p">,</span> <span class="n">fmax</span><span class="o">=</span><span class="mf">25.</span><span class="p">,</span> <span class="n">display_filter</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Designs a bandpass f-k hybrid filter for DAS strain data</span>
+<span class="sd">        Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace_shape : tuple</span>
+<span class="sd">        tuple with the dimensions of the strain data in the spatio-temporal domain such as trace_shape = (trace.shape[0], trace.shape[1]) where dimensions are [channel x time sample]</span>
+<span class="sd">    selected_channels : list</span>
+<span class="sd">        list of the selected channels number  [start, end, step]</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        channel spacing (m)</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling frequency (Hz)</span>
+<span class="sd">    cs_min : float, optional</span>
+<span class="sd">        lower minimum selected sound speeds for the f-k highpass filtering (m/s), by default 1400 m/s</span>
+<span class="sd">    cp_min : float, optional</span>
+<span class="sd">        higher minimum selected sound speed for the f-k highpass filtering, by default 1450 m/s</span>
+<span class="sd">    fmin : float, optional</span>
+<span class="sd">        minimum frequency for the passband, by default 15</span>
+<span class="sd">    fmax : float, optional</span>
+<span class="sd">        maximum frequency for the passband, by default 25</span>
+<span class="sd">    display_filter : bool, optional</span>
+<span class="sd">        option for filter display, by default False</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fk_filter_matrix : array-like</span>
+<span class="sd">        [channel x time sample] a scipy sparse array containing the f-k-filter</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="c1"># Note that the chosen ChannelStep limits the bandwidth frequency obtained with fmax = 1500/ChannelStep*dx</span>
+    <span class="c1"># Get the dimensions of the trace data</span>
+    <span class="n">nnx</span><span class="p">,</span> <span class="n">nns</span> <span class="o">=</span> <span class="n">trace_shape</span>
+
+    <span class="c1"># Define frequency and wavenumber axes</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nns</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">knum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nnx</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">selected_channels</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">dx</span><span class="p">))</span>
+
+    <span class="c1"># 1st step: frequency bandpass filtering</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+    <span class="c1"># set the width of the frequency range tapers</span>
+    <span class="n">df_taper</span> <span class="o">=</span> <span class="mi">4</span> <span class="c1"># Hz</span>
+    <span class="c1"># Apply it to the frequencies of interest</span>
+    <span class="n">fpmax</span> <span class="o">=</span> <span class="n">fmax</span> <span class="o">+</span> <span class="n">df_taper</span>
+    <span class="n">fpmin</span> <span class="o">=</span> <span class="n">fmin</span> <span class="o">-</span> <span class="n">df_taper</span>
+    <span class="c1"># Find the corresponding indexes</span>
+    <span class="n">fmin_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmin</span><span class="p">)</span>
+    <span class="n">fmax_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fpmax</span><span class="p">)</span>
+
+    <span class="c1"># Filter passband</span>
+    <span class="n">H</span><span class="p">[(</span><span class="n">freq</span> <span class="o">&gt;=</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">freq</span> <span class="o">&lt;=</span> <span class="n">fmax</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1"># Replicate the bandpass frequency response along the k-axis to initialize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># 2nd step: filtering waves whose speeds are below cmin, with a taper between csmin and cpmin</span>
+    <span class="c1"># Going through frequencies between the considered range of the bandpass filter</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fmin_idx</span><span class="p">,</span> <span class="n">fmax_idx</span><span class="p">):</span>
+        <span class="c1"># Initiating filter column to zeros</span>
+        <span class="n">filter_col</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span>
+
+        <span class="c1"># Filter transition bands, ramping up from cs_min to cp_min</span>
+        <span class="n">ks_min</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cs_min</span>
+        <span class="n">kp_min</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cp_min</span>
+
+        <span class="n">ks_max</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cs_max</span>
+        <span class="n">kp_max</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">cp_max</span>
+
+        <span class="c1"># Passband</span>
+        <span class="c1"># Positive frequencies (kp_min is positive):</span>
+        <span class="n">filter_col</span><span class="p">[(</span><span class="n">knum</span> <span class="o">&gt;</span> <span class="o">-</span><span class="n">kp_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">knum</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">kp_max</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># Fill the filter matrix by multiplication </span>
+        <span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">*=</span> <span class="n">filter_col</span> 
+
+    <span class="c1"># Symmetrize the filter</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span>
+    <span class="n">fk_filter_matrix</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span>
+
+    <span class="c1"># Filter display, optional</span>
+    <span class="k">if</span> <span class="n">display_filter</span><span class="p">:</span> 
+        <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+        <span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+        <span class="c1"># Context manager for the plot (to avoid changing the global settings)</span>
+        <span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">rc_context</span><span class="p">():</span>
+            <span class="c1"># Change the font sizes for plots (if needed)</span>
+            <span class="c1"># plt.rc(&#39;font&#39;, size=20) </span>
+            <span class="c1"># plt.rc(&#39;xtick&#39;, labelsize=16)  </span>
+            <span class="c1"># plt.rc(&#39;ytick&#39;, labelsize=16)</span>
+
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+            <span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+            <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)],</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            
+            <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freq</span><span class="p">,</span> <span class="n">fk_filter_matrix</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">knum</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="p">:],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;f [Hz]&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">freq</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">freq</span><span class="p">)])</span>
+            <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+            <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">[:,</span> <span class="n">fmin_idx</span> <span class="o">+</span> <span class="mi">500</span><span class="p">],</span> <span class="n">knum</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Gain []&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;k [m$^{-1}$]&#39;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_position</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">knum</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">knum</span><span class="p">)])</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">invert_xaxis</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">tick_right</span><span class="p">()</span>
+            <span class="n">ax3</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">sparse</span><span class="o">.</span><span class="n">COO</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">fk_filter_matrix</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="taper_data">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.taper_data">[docs]</a>
+<span class="k">def</span> <span class="nf">taper_data</span><span class="p">(</span><span class="n">trace</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply a Tukey window to each line (time series) of the input matrix.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace : np.ndarray</span>
+<span class="sd">        2D numpy array, where each column represents a time series.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        Tapered matrix with the same shape as the input.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">nt</span> <span class="o">=</span> <span class="n">trace</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1"># Change alpha to increase the tapering ratio</span>
+    <span class="n">trace</span> <span class="o">*=</span> <span class="n">sp</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">tukey</span><span class="p">(</span><span class="n">nt</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="k">return</span> <span class="n">trace</span></div>
+
+
+
+<div class="viewcode-block" id="fk_filter_filt">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.fk_filter_filt">[docs]</a>
+<span class="k">def</span> <span class="nf">fk_filter_filt</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="n">tapering</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies a pre-calculated f-k filter to DAS strain data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace : np.ndarray</span>
+<span class="sd">        A [channel x time sample] nparray containing the strain data in the spatio-temporal domain.</span>
+<span class="sd">    fk_filter_matrix : np.ndarray</span>
+<span class="sd">        A [channel x time sample] nparray containing the f-k-filter.</span>
+<span class="sd">    tapering : bool, optional</span>
+<span class="sd">        Flag indicating whether to apply tapering to the data. Default is False.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        A [channel x time sample] nparray containing the f-k-filtered strain data in the spatio-temporal domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">tapering</span><span class="p">:</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">taper_data</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the frequency-wavenumber spectrum</span>
+    <span class="n">fk_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">trace</span><span class="p">))</span>
+
+    <span class="c1"># Apply the filter</span>
+    <span class="n">fk_filtered_trace</span> <span class="o">=</span> <span class="n">fk_trace</span> <span class="o">*</span> <span class="n">fk_filter_matrix</span>
+
+    <span class="c1"># Back to the t-x domain</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fk_filtered_trace</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">trace</span><span class="o">.</span><span class="n">real</span></div>
+
+
+
+<div class="viewcode-block" id="fk_filter_sparsefilt">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.fk_filter_sparsefilt">[docs]</a>
+<span class="k">def</span> <span class="nf">fk_filter_sparsefilt</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">fk_filter_matrix</span><span class="p">,</span> <span class="n">tapering</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies a pre-calculated f-k filter to DAS strain data</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace : np.ndarray</span>
+<span class="sd">        A [channel x time sample] nparray containing the strain data in the spatio-temporal domain.</span>
+<span class="sd">    fk_filter_matrix : np.ndarray</span>
+<span class="sd">        A [channel x time sample] nparray containing the f-k-filter.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        A [channel x time sample] nparray containing the f-k-filtered strain data in the spatio-temporal domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">tapering</span><span class="p">:</span>
+        <span class="n">trace</span> <span class="o">=</span> <span class="n">taper_data</span><span class="p">(</span><span class="n">trace</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the frequency-wavenumber spectrum</span>
+    <span class="n">fk_trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">trace</span><span class="p">))</span>
+
+    <span class="c1"># Apply the filter</span>
+    <span class="n">fk_filtered_trace</span> <span class="o">=</span> <span class="n">fk_trace</span> <span class="o">*</span> <span class="n">fk_filter_matrix</span>
+    <span class="c1"># Back to the t-x domain</span>
+    <span class="n">trace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">fk_filtered_trace</span><span class="o">.</span><span class="n">todense</span><span class="p">()))</span>
+
+    <span class="k">return</span> <span class="n">trace</span><span class="o">.</span><span class="n">real</span></div>
+
+
+
+<div class="viewcode-block" id="butterworth_filter">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.butterworth_filter">[docs]</a>
+<span class="k">def</span> <span class="nf">butterworth_filter</span><span class="p">(</span><span class="n">filterspec</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Designs and applies a Butterworth filter.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filterspec : tuple</span>
+<span class="sd">        A tuple containing the filter order, critical frequency, and filter type.</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        The sampling frequency.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    -------</span>
+<span class="sd">    filter_sos : np.ndarray</span>
+<span class="sd">        The second-order sections (SOS) representation of the Butterworth filter.</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">    ------</span>
+<span class="sd">    The Butterworth filter is designed using the scipy.signal.butter function.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">    --------</span>
+<span class="sd">    filter_order = 4</span>
+<span class="sd">    filter_critical_freq = 1000</span>
+<span class="sd">    filter_type_str = &#39;lowpass&#39;</span>
+<span class="sd">    filterspec = (filter_order, filter_critical_freq, filter_type_str)</span>
+<span class="sd">    fs = 44100</span>
+
+<span class="sd">    filter_sos = butterworth_filter(filterspec, fs)</span>
+<span class="sd">    trace_filtered = sp.sosfiltfilt(filter_sos, trace_original, axis=1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">filter_order</span><span class="p">,</span> <span class="n">filter_critical_freq</span><span class="p">,</span> <span class="n">filter_type_str</span> <span class="o">=</span> <span class="n">filterspec</span>
+    <span class="c1"># Build a filter of the desired type</span>
+    <span class="n">wn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">filter_critical_freq</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># convert to angular frequency</span>
+
+    <span class="n">filter_sos</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="n">filter_order</span><span class="p">,</span> <span class="n">wn</span><span class="p">,</span> <span class="n">btype</span><span class="o">=</span><span class="n">filter_type_str</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;sos&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">filter_sos</span></div>
+
+
+
+<div class="viewcode-block" id="instant_freq">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.instant_freq">[docs]</a>
+<span class="k">def</span> <span class="nf">instant_freq</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the instantaneous frequency</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    channel : np.ndarray</span>
+<span class="sd">        1D time series channel trace</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling frequency</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    np.ndarray</span>
+<span class="sd">        instantaneous frequency along time[1:]</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+    <span class="c1"># Compute the instantaneous frequency</span>
+    <span class="n">fi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">hilbert</span><span class="p">(</span><span class="n">channel</span><span class="p">))))</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">fs</span>
+    <span class="c1"># Sliding window filtering to smooth out the fi</span>
+    <span class="c1"># window_size = 50</span>
+    <span class="c1"># ffi = np.convolve(fi, np.ones(window_size)/window_size, mode=&#39;same&#39;)</span>
+    <span class="c1"># Compute the instantaneous median frequency</span>
+    <span class="c1"># f, t, Zxx = sp.spectrogram(channel, fs, nperseg=140, noverlap=0.99)</span>
+    <span class="c1"># cumulative_sum = np.cumsum(Zxx, axis=0)</span>
+    <span class="c1"># Find the index corresponding to the median frequency at each time point</span>
+    <span class="c1"># median_index = np.argmax(cumulative_sum &gt;= 0.5 * cumulative_sum[-1], axis=0)</span>
+    <span class="c1"># fm = f[median_index]</span>
+    <span class="k">return</span> <span class="n">fi</span> <span class="c1">#, ffi, t, fm</span></div>
+
+
+
+<div class="viewcode-block" id="bp_filt">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.bp_filt">[docs]</a>
+<span class="k">def</span> <span class="nf">bp_filt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">fs</span><span class="p">,</span><span class="n">fmin</span><span class="p">,</span><span class="n">fmax</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;bp_filt - perform bandpass filtering on an array of DAS data</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like</span>
+<span class="sd">        array containing wave signal from DAS data</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling frequency</span>
+<span class="sd">    fmin : float    </span>
+<span class="sd">        minimum frequency for the passband</span>
+<span class="sd">    fmax : float</span>
+<span class="sd">        maximum frequency for the passband</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tr_filt : array-like</span>
+<span class="sd">        bandpass filtered data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">butter</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="n">fmin</span><span class="o">/</span><span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="n">fmax</span><span class="o">/</span><span class="p">(</span><span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">)],</span> <span class="s1">&#39;bp&#39;</span><span class="p">)</span>
+    <span class="n">tr_filt</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tr_filt</span></div>
+
+
+
+<div class="viewcode-block" id="fk_filt">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.fk_filt">[docs]</a>
+<span class="k">def</span> <span class="nf">fk_filt</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">tint</span><span class="p">,</span><span class="n">fs</span><span class="p">,</span><span class="n">xint</span><span class="p">,</span><span class="n">dx</span><span class="p">,</span><span class="n">c_min</span><span class="p">,</span><span class="n">c_max</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;fk_filt - perform fk filtering on an array of DAS data   </span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like</span>
+<span class="sd">        array containing wave signal from DAS data</span>
+<span class="sd">    tint : float</span>
+<span class="sd">        decimation time interval between considered samples</span>
+<span class="sd">    fs : float</span>
+<span class="sd">        sampling frequency</span>
+<span class="sd">    xint : float</span>
+<span class="sd">        decimation space interval between considered samples</span>
+<span class="sd">    dx : float</span>
+<span class="sd">        spatial resolution</span>
+<span class="sd">    c_min : float</span>
+<span class="sd">        minimum phase speed for the pass-band filter in f-k domain</span>
+<span class="sd">    c_max : float</span>
+<span class="sd">        maximum phase speed for the pass-band filter in f-k domain</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    f : array-like</span>
+<span class="sd">        vector of frequencies</span>
+
+<span class="sd">    k : array-like</span>
+<span class="sd">        vector of wavenumbers   </span>
+<span class="sd">    g : array-like</span>
+<span class="sd">        2D designed gaussian filter</span>
+<span class="sd">    data_fft_g: array-like</span>
+<span class="sd">        2D Fourier transformed data, filtered by g</span>
+<span class="sd">    data_g.real: array-like</span>
+<span class="sd">        Real value of spatiotemporal filtered data</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="c1"># Perform 2D Fourier Transform on the detrended input data</span>
+    <span class="n">data_fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="c1"># Make freq and wavenum vectors</span>
+    <span class="n">nx</span> <span class="o">=</span> <span class="n">data_fft</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ns</span> <span class="o">=</span> <span class="n">data_fft</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">tint</span><span class="o">/</span><span class="n">fs</span><span class="p">))</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">xint</span><span class="o">*</span><span class="n">dx</span><span class="p">))</span>
+    <span class="n">ff</span><span class="p">,</span><span class="n">kk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+
+    <span class="c1">#  Define a filter in the f-k domain</span>
+    <span class="c1"># Soundwaves have f/k = c so f = k*c</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="p">((</span><span class="n">ff</span> <span class="o">&lt;</span> <span class="n">kk</span><span class="o">*</span><span class="n">c_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ff</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">kk</span><span class="o">*</span><span class="n">c_min</span><span class="p">))</span>
+    <span class="n">g2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="p">((</span><span class="n">ff</span> <span class="o">&lt;</span> <span class="n">kk</span><span class="o">*</span><span class="n">c_max</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ff</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">kk</span><span class="o">*</span><span class="n">c_max</span><span class="p">))</span>
+
+    <span class="c1"># Symmetrize the filter</span>
+    <span class="n">g</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="c1"># g2 += np.fliplr(g2)</span>
+    <span class="n">g</span> <span class="o">-=</span> <span class="n">g2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span> <span class="c1"># combine to have g = g - g2</span>
+    
+    <span class="c1"># Apply Gaussian filter to the f-k filter</span>
+    <span class="c1"># Tuning the standard deviation of the filter can improve computational efficiency</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="c1"># epsilon = 0.0001</span>
+    <span class="c1"># g = np.exp (-epsilon*( ff-kk*c)**2 )</span>
+
+    <span class="c1"># Normalize the filter to values between 0 and 1</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">g</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+
+    <span class="c1"># Apply the filter to the 2D Fourier-transformed data</span>
+    <span class="n">data_fft_g</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">data_fft</span><span class="p">)</span> <span class="o">*</span> <span class="n">g</span>
+    <span class="c1"># Perform inverse Fourier Transform to obtain the filtered data in t-x domain</span>
+    <span class="n">data_g</span> <span class="o">=</span> <span class="n">ifft2</span><span class="p">(</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">data_fft_g</span><span class="p">))</span>
+    
+    <span class="c1"># return f, k, g, data_fft_g, data_g.real</span>
+    <span class="k">return</span> <span class="n">data_g</span><span class="o">.</span><span class="n">real</span></div>
+
+
+
+<div class="viewcode-block" id="snr_tr_array">
+<a class="viewcode-back" href="../../src/dsp.html#das4whales.dsp.snr_tr_array">[docs]</a>
+<span class="k">def</span> <span class="nf">snr_tr_array</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the 2D Signal-to-Noise Ratio (SNR) array for a given input trace.</span>
+
+<span class="sd">    This function computes the SNR for each element in the input 2D trace array. The SNR</span>
+<span class="sd">    is calculated as the ratio of the square of the trace values to the square of the</span>
+<span class="sd">    standard deviation of the trace along the second axis (time).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    trace : numpy.ndarray</span>
+<span class="sd">        The input 2D trace array for which the SNR is to be calculated.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    numpy.ndarray</span>
+<span class="sd">        A 2D array containing the Signal-to-Noise Ratio (SNR) values for each element</span>
+<span class="sd">        in the input trace.</span>
+<span class="sd">    &quot;&quot;&quot;</span>  
+    <span class="k">if</span> <span class="n">env</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">hilbert</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">trace</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">trace</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Bouffaut &amp; Goestchel
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=4e2eecee"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    </body>
+</html>

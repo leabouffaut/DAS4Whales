@@ -1,5 +1,6 @@
 # Jupyter notebooks
 .ipynb_checkpoints
+DAS4Whales_ExampleNotebook.ipynb
 
 # Development jupyter notebooks
 devnotebooks/
@@ -9,13 +10,14 @@ dev.ipynb
 .DS_Store
 
 # Image files
-*.png
+# *.png
 
 # PyCharm IDE specific files
 .idea
 
 # Python virtual environment
 venv/
+.venv/
 
 # Build artifacts
 build/

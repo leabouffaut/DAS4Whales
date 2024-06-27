@@ -1,0 +1,9 @@
+/* _static/custom.css */
+
+/* Remove the red color and box around function names */
+.py-function .descname {
+    color: inherit; /* Inherit the color from the parent element */
+    border: none; /* Remove any border */
+    background: none; /* Remove any background */
+    padding: 0; /* Remove any padding */
+}

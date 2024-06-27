@@ -15,6 +15,21 @@ from das4whales.dsp import get_fx, instant_freq
 from datetime import datetime
 
 def plot_rawdata(trace, time, dist, fig_size=(12, 10)):
+    """
+    Plot the raw DAS data.
+
+    Parameters
+    ----------
+    trace : ndarray
+        The DAS trace data.
+    time : ndarray
+        The time values corresponding to the trace data.
+    dist : ndarray
+        The distance values corresponding to the trace data.
+    fig_size : tuple, optional
+        The size of the figure in inches, by default (12, 10).
+    """    
+
     fig = plt.figure(figsize=fig_size)
     wv = plt.imshow(trace * 1e9, aspect='auto', cmap='RdBu', extent=[min(time),max(time),min(dist)*1e-3,max(dist)*1e-3], origin='lower', vmin=-500, vmax=500)
     plt.title('Raw DAS data')
@@ -29,19 +44,36 @@ def plot_tx(trace, time, dist, file_begin_time_utc=0, fig_size=(12, 10), v_min=N
     """
     Spatio-temporal representation (t-x plot) of the strain data
 
-    Inputs:
-    :param trace: a [channel x time sample] nparray containing the strain data in the spatio-temporal domain
-    :param time: the corresponding time vector
-    :param dist: the corresponding distance along the FO cable vector
-    :param file_begin_time_utc: the time stamp of the represented file
-    :param fig_size: Tuple of the figure dimensions. Default fig_size=(12, 10)
-    :param v_min: sets the min nano strain amplitudes of the colorbar. Default v_min=0
-    :param v_max: sets the max nano strain amplitudes of the colorbar, Default v_max=0.2
+    Parameters:
+    ----------
+    trace : np.ndarray
+        A [channel x time sample] nparray containing the strain data in the spatio-temporal domain
+    time : np.ndarray
+        The corresponding time vector
+    dist : np.ndarray
+        The corresponding distance along the FO cable vector
+    file_begin_time_utc : int or datetime.datetime, optional
+        The time stamp of the represented file (default is 0)
+    fig_size : tuple, optional
+        Tuple of the figure dimensions (default is (12, 10))
+    v_min : float, optional
+        Sets the min nano strain amplitudes of the colorbar (default is None)
+    v_max : float, optional
+        Sets the max nano strain amplitudes of the colorbar (default is None)
 
-    Outputs:
-    :return: a tx plot
+    Returns:
+    -------
+    None
+
+    Notes:
+    ------
+    This function plots a spatio-temporal representation (t-x plot) of the strain data. It uses the given strain data,
+    time vector, and distance vector to create the plot. The plot shows the strain envelope as a color map, with time
+    on the x-axis and distance on the y-axis. The color of each point in the plot represents the strain amplitude at
+    that point. The function also supports customizing the figure size, colorbar limits, and title.
 
     """
+
     fig = plt.figure(figsize=fig_size)
     #TODO determine if the envelope should be implemented here rather than just abs
     # Replace abs(trace) per abs(sp.hilbert(trace, axis=1)) ? 
@@ -65,22 +97,47 @@ def plot_fx(trace, dist, fs, file_begin_time_utc=0, win_s=2, nfft=4096, fig_size
     """
     Spatio-spectral (f-k plot) of the strain data
 
-    Inputs:
-    :param trace: a [channel x time sample] nparray containing the strain data in the spatio-temporal domain
-    :param dist: the corresponding distance along the FO cable vector
-    :param fs: the sampling frequency (Hz)
-    :param file_begin_time_utc: the time stamp of the represented file
-    :param win_s: the duration of each f-k plot (s). Default 2 s
-    :param nfft: number of time samples used for the FFT. Default 4096
-    :param fig_size: Tuple of the figure dimensions. Default fig_size=(12, 10)
-    :param f_min: displayed minimum frequency interval (Hz). Default 0 Hz
-    :param f_max: displayed maxumum frequency interval (Hz). Default 100 Hz
-    :param v_min: set the min nano strain amplitudes of the colorbar.
-    :param v_max: set the max nano strain amplitudes of the colorbar.
+    Parameters
+    ----------
+    trace : np.ndarray
+        A [channel x time sample] nparray containing the strain data in the spatio-temporal domain
+    dist : np.ndarray
+        The corresponding distance along the FO cable vector
+    fs : float
+        The sampling frequency (Hz)
+    file_begin_time_utc : int or datetime.datetime, optional
+        The time stamp of the represented file, by default 0
+    win_s : int, optional
+        The duration of each f-k plot (s), by default 2
+    nfft : int, optional
+        Number of time samples used for the FFT, by default 4096
+    fig_size : tuple, optional
+        Tuple of the figure dimensions, by default (12, 10)
+    f_min : int, optional
+        Displayed minimum frequency interval (Hz), by default 0
+    f_max : int, optional
+        Displayed maximum frequency interval (Hz), by default 100
+    v_min : float, optional
+        Set the min nano strain amplitudes of the colorbar, by default None
+    v_max : float, optional
+        Set the max nano strain amplitudes of the colorbar, by default None
 
-    Outputs:
-    :return: fx plot
+    Returns
+    -------
+    None
 
+    Notes
+    -----
+    This function plots the spatio-spectral (f-k plot) of the strain data.
+
+    - The number of subplots is evaluated based on the duration of each f-k plot.
+    - The frequency axis is created using the FFT.
+    - The strain data is processed and plotted for each subplot.
+
+    Examples
+    --------
+    >>> plot_fx(trace, dist, fs, file_begin_time_utc=0, win_s=2, nfft=4096, fig_size=(12, 10), f_min=0,
+                f_max=100, v_min=None, v_max=None)
     """
 
     # Evaluate the number of subplots
@@ -132,17 +189,30 @@ def plot_fx(trace, dist, fs, file_begin_time_utc=0, win_s=2, nfft=4096, fig_size
 
 def plot_spectrogram(p, tt, ff, fig_size=(17, 5), v_min=None, v_max=None, f_min=None, f_max=None):
     """
+    Plot a spectrogram.
 
-    :param p: spectrogram values in dB
-    :param tt: associated time vector (s)
-    :param ff: associated frequency vector (Hz)
-    :param fig_size: Tuple of the figure dimensions. Default fig_size=(12, 10)
-    :param v_min: set the min dB strain amplitudes of the colorbar.
-    :param v_max: set the max dB strain amplitudes of the colorbar.
-    :param f_min: minimum frequency for the spectrogram display
-    :param f_max: maximum frequency for the spectrogram display
+    Parameters
+    ----------
+    p : ndarray
+        Spectrogram values in dB.
+    tt : ndarray
+        Associated time vector (s).
+    ff : ndarray
+        Associated frequency vector (Hz).
+    fig_size : tuple, optional
+        Tuple of the figure dimensions. Default is (17, 5).
+    v_min : float, optional
+        Minimum dB strain amplitudes of the colorbar.
+    v_max : float, optional
+        Maximum dB strain amplitudes of the colorbar.
+    f_min : float, optional
+        Minimum frequency for the spectrogram display.
+    f_max : float, optional
+        Maximum frequency for the spectrogram display.
 
-    :return:
+    Returns
+    -------
+    None
 
     """
     roseus = import_roseus()
@@ -160,7 +230,28 @@ def plot_spectrogram(p, tt, ff, fig_size=(17, 5), v_min=None, v_max=None, f_min=
 
 
 def plot_3calls(channel, time, t1, t2, t3):
+    """
+    Plot the strain channel with 3 calls highlighted.
 
+    Parameters
+    ----------
+    channel : np.ndarray
+        The strain channel.
+    time : np.ndarray
+        The time values.
+    t1 : float
+        The time of the first call.
+    t2 : float
+        The time of the second call.
+    t3 : float
+        The time of the third call.
+
+    Returns
+    -------
+    None
+
+    """
+    
     plt.figure(figsize=(12,4))
 
     plt.subplot(211)

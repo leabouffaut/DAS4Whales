@@ -17,14 +17,49 @@ from das4whales.plot import import_roseus
 import concurrent.futures
 
 ## Matched filter detection functions:
-
 def gen_linear_chirp(fmin, fmax, duration, sampling_rate):
+    """Generate a linear chirp signal.
+
+    Parameters
+    ----------
+    fmin : float
+        The starting frequency of the chirp signal.
+    fmax : float
+        The ending frequency of the chirp signal.
+    duration : float
+        The duration of the chirp signal in seconds.
+    sampling_rate : int
+        The sampling rate of the chirp signal in Hz.
+
+    Returns
+    -------
+    numpy.ndarray
+        The generated linear chirp signal.
+    """
     t = np.arange(0, duration, 1/sampling_rate)
     y = sp.chirp(t, f0=fmax, f1=fmin, t1=duration, method='linear')
     return y
 
 
 def gen_hyperbolic_chirp(fmin, fmax, duration, sampling_rate):
+    """Generate a hyperbolic chirp signal.
+
+    Parameters
+    ----------
+    fmin : float
+        The starting frequency of the chirp signal.
+    fmax : float
+        The ending frequency of the chirp signal.
+    duration : float
+        The duration of the chirp signal in seconds.
+    sampling_rate : int
+        The sampling rate of the chirp signal in Hz.
+
+    Returns
+    -------
+    numpy.ndarray
+        The generated hyperbolic chirp signal.
+    """
     t = np.arange(0, duration, 1/sampling_rate)
     y = sp.chirp(t, f0=fmax, f1=fmin, t1=duration, method='hyperbolic')
     return y
@@ -161,11 +196,48 @@ def pick_times_env(corr_m, threshold):
 
 
 def process_corr(corr, threshold):
+    """Detects the peak times in a correlation serie, kernel for parallelization.
+
+    This function takes a correlation serie, computes the Hilbert transform of the correlation, and detects the peak times based on a given threshold.
+
+    Parameters
+    ----------
+    corr : np.ndarray
+        The correlogram array.
+    threshold : float, optional
+        The threshold value for peak detection. Defaults to 0.3.
+
+    Returns
+    -------
+    np.ndarray
+        The peak indexes for the given correlation.
+
+    """
+
     peaks_indexes = sp.find_peaks(abs(sp.hilbert(corr)), prominence=threshold)[0]
     return peaks_indexes
 
 
 def pick_times_par(corr_m, threshold):
+    """Detects the peak times in a correlation matrix using parallel processing.
+
+    This function takes a correlation matrix, computes the Hilbert transform of each correlation,
+    and detects the peak times based on a given threshold using parallel processing.
+
+    Parameters
+    ----------
+    corr_m : numpy.ndarray
+        The correlation matrix.
+    threshold : float, optional
+        The threshold value for peak detection. Defaults to 0.3.
+
+    Returns
+    -------
+    list
+        A list of arrays, where each array contains the peak indexes for each correlation.
+
+    """
+
     peaks_indexes_m = []
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = [executor.submit(process_corr, corr, threshold) for corr in corr_m]
@@ -340,7 +412,7 @@ def buildkernel(f0, f1, bdwdth, dur, f, t, samp, fmin, fmax, plotflag=False):
     """
     Calculate kernel and plot.
 
-    Parameters:
+    Parameters
     ----------
     f0 : float
         Starting frequency.
@@ -361,7 +433,7 @@ def buildkernel(f0, f1, bdwdth, dur, f, t, samp, fmin, fmax, plotflag=False):
     kernel_lims : tuple, optional
         Tuple of minimum kernel range and maximum kernel range. Default is finKernelLims.
 
-    Returns:
+    Returns
     -------
     tvec : numpy.array
         Vector of kernel times.
@@ -421,6 +493,33 @@ def buildkernel(f0, f1, bdwdth, dur, f, t, samp, fmin, fmax, plotflag=False):
 
 
 def buildkernel_from_template(fmin, fmax, dur, fs, nperseg, nhop, plotflag=False):
+    """
+    Build a kernel from a template.
+
+    Parameters
+    ----------
+    fmin : float
+        The minimum frequency of interest.
+    fmax : float
+        The maximum frequency of interest.
+    dur : float
+        The duration of the kernel in seconds.
+    fs : float
+        The sampling rate of the kernel in Hz.
+    nperseg : int
+        The length of each segment for the spectrogram computation.
+    nhop : int
+        The number of samples to advance between segments.
+    plotflag : bool, optional
+        Whether to plot the kernel, defaults to False.  
+
+    Returns
+    -------
+    numpy.ndarray
+        The computed kernel.
+
+    """
+
     template = gen_hyperbolic_chirp(fmin, fmax, dur, fs)
     template *= np.hanning(len(template))
     spectro, ff, tt = get_sliced_nspectrogram(template, fs, fmin, fmax, nperseg, nhop, plotflag=False)
@@ -507,7 +606,7 @@ def xcorr(t, f, Sxx, tvec, fvec, BlueKernel):
     """
     Cross-correlate kernel with spectrogram
 
-    Parameters:
+    Parameters
     ----------
     t : np.array
         Vector of times returned from plotwav
@@ -522,7 +621,7 @@ def xcorr(t, f, Sxx, tvec, fvec, BlueKernel):
     BlueKernel : np.array
         2-D array of kernel amplitudes
 
-    Returns:
+    Returns
     -------
     t_scale : numpy.array
         Vector of correlation lags

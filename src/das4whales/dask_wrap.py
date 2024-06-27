@@ -1,3 +1,12 @@
+"""
+dask_wrap.py - Dask wrapper functions for DAS data processing
+
+This module provides functions to wrap up the functions of das4whales in a dask way.
+
+Authors: Léa Bouffaut, Quentin Goestchel
+Date: 2024
+"""
+
 # File that wrap up functions in dsp.py in a dask way
 import h5py
 import wget
@@ -10,21 +19,34 @@ import das4whales as dw
 
 
 def load_das_data(filename, selected_channels, metadata):
-    #TODO: Change docstring
     """
     Load the DAS data corresponding to the input file name as strain according to the selected channels.
 
-    Inputs:
-    :param filename: a string containing the full path to the data to load
-    :param selected_channels:
-    :param metadata: dictionary filled with metadata (sampling frequency, channel spacing, scale factor...)
+    Parameters
+    ----------
+    filename : str
+        The full path to the data to load.
+    selected_channels : list
+        A list containing the start, stop, and step values for selecting channels.
+    metadata : dict
+        A dictionary filled with metadata (sampling frequency, channel spacing, scale factor, etc.).
 
-    Outputs:
-    :return: trace: a [channel x sample] nparray containing the strain data
-    :return: tx: the corresponding time axis (s)
-    :return: dist: the corresponding distance along the FO cable axis (m)
-    :return: file_begin_time_utc: the beginning time of the file, can be printed using
-    file_begin_time_utc.strftime("%Y-%m-%d %H:%M:%S")
+    Returns
+    -------
+    np.ndarray
+        A [channel x sample] numpy array containing the strain data.
+    np.ndarray
+        The corresponding time axis (s).
+    np.ndarray
+        The corresponding distance along the FO cable axis (m).
+    datetime.datetime
+        The beginning time of the file.
+
+    Raises
+    ------
+    ValueError
+        If the file is not found.
+
     """
     if not os.path.exists(filename):
         raise ValueError('File not found')

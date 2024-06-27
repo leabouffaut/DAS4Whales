@@ -4,7 +4,7 @@ data_handle.py - data handling functions for DAS data
 This module provides various functions to handle DAS data, including loading, downloading, and conditioning. 
 It aims at having specific functions for each interrogator type.
 
-Authors: Léa Bouffaut, Quentin Goestchel
+Authors: Léa Bouffaut, Quentin Goestchel, Erfan Horeh
 Date: 2023-2024
 """
 
@@ -14,6 +14,7 @@ import os
 import numpy as np
 import dask.array as da
 from datetime import datetime
+from nptdms import TdmsFile
 
 
 def hello_world_das_package():
@@ -108,6 +109,50 @@ def get_metadata_optasense(filepath):
     return meta_data
 
 
+def get_metadata_silixa(filepath):
+    """Gets DAS acquisition parameters for the silixa interrogator 
+
+    Parameters
+    ----------
+    filepath : string
+        a string containing the full path to the data to load
+
+    Returns
+    -------
+    metadata : dict
+        dictionary filled with metadata, key's breakdown:\n
+        fs: the sampling frequency (Hz)\n
+        dx: interval between two virtual sensing points also called channel spacing (m)\n
+        nx: the number of spatial samples also called channels\n
+        ns: the number of time samples\n
+        n: refractive index of the fiber\n
+        GL: the gauge length (m)\n
+        scale_factor: the value to convert DAS data from strain rate to strain
+
+    """
+
+    # Make sure the file exists
+    if os.path.exists(filepath):
+        fp = TdmsFile.read(filepath)
+        props = fp.properties
+        group = fp['Measurement']
+        acousticData = np.asarray( [group[channel].data for channel in group] )
+
+        fs = props['SamplingFrequency[Hz]'] # sampling rate in Hz
+        dx = props['SpatialResolution[m]'] # channel spacing in m
+        ns = acousticData.shape[1]
+        n =  props['FibreIndex'] # refractive index
+        GL =  props['GaugeLength'] # gauge length in m
+        nx = acousticData.shape[0] # number of channels
+        scale_factor = (116 * fs * 10**-9) / (GL * 2**13)
+
+        meta_data = {'fs': fs, 'dx': dx, 'ns': ns,'n': n,'GL': GL, 'nx':nx , 'scale_factor': scale_factor}
+    else:
+        raise FileNotFoundError(f'File {filepath} not found')
+    
+    return meta_data
+
+
 def raw2strain(trace, metadata):
     """Transform the amplitude of raw das data from strain-rate to strain according to scale factor
 
@@ -135,17 +180,25 @@ def load_das_data(filename, selected_channels, metadata):
     """
     Load the DAS data corresponding to the input file name as strain according to the selected channels.
 
-    Inputs:
-    :param filename: a string containing the full path to the data to load
-    :param selected_channels:
-    :param metadata: dictionary filled with metadata (sampling frequency, channel spacing, scale factor...)
+    Parameters
+    ----------
+    filename : str
+        A string containing the full path to the data to load.
+    selected_channels : list
+        A list containing the selected channels.
+    metadata : dict
+        A dictionary filled with metadata (sampling frequency, channel spacing, scale factor...).
 
-    Outputs:
-    :return: trace: a [channel x sample] nparray containing the strain data
-    :return: tx: the corresponding time axis (s)
-    :return: dist: the corresponding distance along the FO cable axis (m)
-    :return: file_begin_time_utc: the beginning time of the file, can be printed using
-    file_begin_time_utc.strftime("%Y-%m-%d %H:%M:%S")
+    Returns
+    -------
+    trace : np.ndarray
+        A [channel x sample] nparray containing the strain data.
+    tx : np.ndarray
+        The corresponding time axis (s).
+    dist : np.ndarray
+        The corresponding distance along the FO cable axis (m).
+    file_begin_time_utc : datetime.datetime
+        The beginning time of the file, can be printed using file_begin_time_utc.strftime("%Y-%m-%d %H:%M:%S").
     """
     if not os.path.exists(filename):
         raise FileNotFoundError(f'File {filename} not found')

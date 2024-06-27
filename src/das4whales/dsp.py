@@ -17,15 +17,19 @@ from numpy.fft import fft2, fftfreq, fftshift, ifft2, ifftshift
 # Transformations
 def get_fx(trace, nfft):
     """
-    Apply a fast Fourier transform (fft) to each channel of the strain data matrix
+    Apply a fast Fourier transform (FFT) to each channel of the strain data matrix.
 
-    Inputs:
-    :param trace: a [channel x time sample] nparray containing the strain data in the spatio-temporal domain
-    :param nfft: number of time samples used for the FFT.
+    Parameters
+    ----------
+    trace : np.ndarray
+        A 2D array of shape (channel, time sample) containing the strain data in the spatio-temporal domain.
+    nfft : int
+        Number of time samples used for the FFT.
 
-    Outputs:
-    :return: trace, a [channel x freq. sample] nparray containing the strain data in the spatio-spectral domain
-
+    Returns
+    -------
+    ndarray
+        A 2D array of shape (channel, freq. sample) containing the strain data in the spatio-spectral domain.
     """
 
     fx = 2 * (abs(np.fft.fftshift(np.fft.fft(trace, nfft), axes=1)))
@@ -38,17 +42,27 @@ def get_spectrogram(waveform, fs, nfft=128, overlap_pct=0.8):
     """
     Get the spectrogram of a single channel
 
-    Inputs:
-    :param waveform: single channel temporal signal
-    :param fs: the sampling frequency (Hz)
-    :param nfft: number of time samples used for the STFT. Default 128
-    :param overlap_pct: percentage of overlap in the spectrogram. Default 0.8
+    Parameters
+    ----------
+    waveform : np.ndarray
+        Single channel temporal signal.
+    fs : float
+        The sampling frequency (Hz).
+    nfft : int, optional
+        Number of time samples used for the STFT. Default is 128.
+    overlap_pct : float, optional
+        Percentage of overlap in the spectrogram. Default is 0.8.
 
-    Outputs:
-    :return: a spectrogram and associated time & frequency vectors
+    Returns
+    -------
+    p : np.ndarray
+        Spectrogram in dB scale (normalized by max).
+    tt : np.ndarray
+        Time vector.
+    ff : ndarray
+        Frequency vector.
 
     """
-
     spectrogram = np.abs(librosa.stft(
         y=waveform, n_fft=nfft,
         hop_length=int(np.floor(nfft * (1 - overlap_pct)))))
@@ -65,7 +79,11 @@ def get_spectrogram(waveform, fs, nfft=128, overlap_pct=0.8):
 
 
 # Filters
+# f-k filters design functions
+#TODO: uniformize and make a global function with choice of filter
+# Version from MATLAB code
 def fk_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400, cp_min=1450, cp_max=3400, cs_max=3500):
+    # TODO: mark as deprecated, use hybrid_filter_design instead
     """
     Designs a f-k filter for DAS strain data
     Keeps by default data with propagation speed [1450-3400] m/s
@@ -73,21 +91,32 @@ def fk_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400, cp_min
     The transition band is inspired and adapted from Yi Lin's matlab fk function
     https://github.com/nicklinyi/seismic_utils/blob/master/fkfilter.m
 
-    Inputs:
-    :param trace_shape: a tuple with the dimensions of the strain data in the spatio-temporal domain such as
-    trace_shape = (trace.shape[0], trace.shape[1]) where dimensions are [channel x time sample]
-    :param selected_channels: a list of the selected channels number  [start, end, step]
-    :param dx: the channel spacing (m)
-    :param fs: the sampling frequency (Hz)
-    :param cs_min: the minimum selected sound speeds for the f-k passband filtering (m/s). Default 1400 m/s
-    :param cp_min: the minimum selected sound speed for the f-k stopband filtering, values should frame
-    [c_min and c_max] (m/s). Default 1450 m/s.
-    :param cp_max: the maximum selected sound speeds for the f-k passband filtering (m/s). Default 3400 m/s
-    :param cs_max: the maximumselected sound speed for the f-k stopband filtering, values should frame
-    [c_min and c_max] (m/s). Default 3500 m/s
+    Parameters
+    ----------
+    trace_shape : tuple
+        A tuple with the dimensions of the strain data in the spatio-temporal domain such as
+        trace_shape = (trace.shape[0], trace.shape[1]) where dimensions are [channel x time sample].
+    selected_channels : list
+        A list of the selected channels number [start, end, step].
+    dx : float
+        Channel spacing (m).
+    fs : float
+        Sampling frequency (Hz).
+    cs_min : float, optional
+        Minimum selected sound speeds for the f-k passband filtering (m/s). Default is 1400 m/s.
+    cp_min : float, optional
+        Minimum selected sound speed for the f-k stopband filtering, values should frame [c_min and c_max] (m/s).
+        Default is 1450 m/s.
+    cp_max : float, optional
+        Maximum selected sound speeds for the f-k passband filtering (m/s). Default is 3400 m/s.
+    cs_max : float, optional
+        Maximum selected sound speed for the f-k stopband filtering, values should frame [c_min and c_max] (m/s).
+        Default is 3500 m/s.
 
-    Outputs:
-    :return: fk_filter_matrix, a [channel x time sample] nparray containing the f-k-filter
+    Returns
+    -------
+    fk_filter_matrix : ndarray
+        A [channel x time sample] numpy array containing the f-k-filter.
 
     """
 
@@ -141,9 +170,9 @@ def fk_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400, cp_min
 
     return fk_filter_matrix
 
-
+# Infinite wave speed filter, sine tapers
 def hybrid_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400., cp_min=1450., fmin=15., fmax=25., display_filter=False):
-    """Designs a bandpass f-k hybrid filter for DAS strain data
+    """Designs an infinite wave speed bandpass f-k hybrid filter for DAS strain data
         Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)
 
     Parameters
@@ -238,41 +267,44 @@ def hybrid_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400., c
     if display_filter: 
         import matplotlib.pyplot as plt
         import matplotlib.gridspec as gridspec
-        # Change the font sizes for plots (if needed)
-        # plt.rc('font', size=20) 
-        # plt.rc('xtick', labelsize=16)  
-        # plt.rc('ytick', labelsize=16)
 
-        fig = plt.figure(figsize=(18, 10))
-        gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
+        # Context manager for the plot (to avoid changing the global settings)
+        with plt.rc_context():
+            # Change the font sizes for plots (if needed)
+            # plt.rc('font', size=20) 
+            # plt.rc('xtick', labelsize=16)  
+            # plt.rc('ytick', labelsize=16)
 
-        ax1 = plt.subplot(gs[0])
-        ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto')
-        ax1.set_ylabel('k [m$^{-1}$]')
-        ax1.set_xlabel('f [Hz]')
-        
-        ax2 = plt.subplot(gs[2], sharex=ax1)
-        ax2.plot(freq, fk_filter_matrix[len(knum)//2, :], lw=3)
-        ax2.set_xlabel('f [Hz]')
-        ax2.set_ylabel('Gain []')
-        ax2.set_xlim([min(freq), max(freq)])
-        ax2.grid()
+            fig = plt.figure(figsize=(18, 10))
+            gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
 
-        ax3 = plt.subplot(gs[1], sharey=ax1)
-        ax3.plot(fk_filter_matrix[:, fmin_idx + 250], knum, lw=3)
-        ax3.set_xlabel('Gain []')
-        ax3.set_ylabel('k [m$^{-1}$]')
-        ax3.yaxis.set_label_position("right")
-        ax3.set_ylim([min(knum), max(knum)])
-        ax3.invert_xaxis()
-        ax3.yaxis.tick_right()
-        ax3.grid()
-        plt.tight_layout()
-        plt.show()
+            ax1 = plt.subplot(gs[0])
+            ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto')
+            ax1.set_ylabel('k [m$^{-1}$]')
+            ax1.set_xlabel('f [Hz]')
+            
+            ax2 = plt.subplot(gs[2], sharex=ax1)
+            ax2.plot(freq, fk_filter_matrix[len(knum)//2, :], lw=3)
+            ax2.set_xlabel('f [Hz]')
+            ax2.set_ylabel('Gain []')
+            ax2.set_xlim([min(freq), max(freq)])
+            ax2.grid()
+
+            ax3 = plt.subplot(gs[1], sharey=ax1)
+            ax3.plot(fk_filter_matrix[:, fmin_idx + 250], knum, lw=3)
+            ax3.set_xlabel('Gain []')
+            ax3.set_ylabel('k [m$^{-1}$]')
+            ax3.yaxis.set_label_position("right")
+            ax3.set_ylim([min(knum), max(knum)])
+            ax3.invert_xaxis()
+            ax3.yaxis.tick_right()
+            ax3.grid()
+            plt.tight_layout()
+            plt.show()
 
     return sparse.COO.from_numpy(fk_filter_matrix)
 
-
+# Non-infinite wave speed filter, sine tapers
 def hybrid_ninf_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400., cp_min=1450., cp_max=3400, cs_max=3500, fmin=15., fmax=25., display_filter=False):
     """Designs a bandpass f-k hybrid filter for DAS strain data
         Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)
@@ -312,10 +344,14 @@ def hybrid_ninf_filter_design(trace_shape, selected_channels, dx, fs, cs_min=140
     freq = np.fft.fftshift(np.fft.fftfreq(nns, d=1 / fs))
     knum = np.fft.fftshift(np.fft.fftfreq(nnx, d=selected_channels[2] * dx))
 
+    # Replace the sine/cosine tapers by butterworth filters
+    b, a = sp.butter(8, [fmin/(fs/2), fmax/(fs/2)], 'bp')
+    H = np.concatenate((np.zeros(len(freq)//2), np.abs(sp.freqz(b, a, worN=len(freq)//2)[1]) ** 2))
+
     # 1st step: frequency bandpass filtering
-    H = np.zeros_like(freq)
-    # set the width of the frequency range tapers
-    df_taper = 4 # Hz
+    # H = np.zeros_like(freq)
+    # set the width of the frequency range tapers, since butterworth filters are smooth
+    df_taper = 14 # Hz
     # Apply it to the frequencies of interest
     fpmax = fmax + df_taper
     fpmin = fmin - df_taper
@@ -323,18 +359,18 @@ def hybrid_ninf_filter_design(trace_shape, selected_channels, dx, fs, cs_min=140
     fmin_idx = np.argmax(freq >= fpmin)
     fmax_idx = np.argmax(freq >= fpmax)
 
-    # Filter transition band, ramping up from fpmin to fmin
-    rup_mask = ((freq >= fpmin) & (freq <= fmin))
-    H[rup_mask] = np.sin(0.5 * np.pi * (freq[rup_mask] - fpmin) / (fmin - fpmin))
-    # Filter passband
-    H[(freq >= fmin) & (freq <= fmax)] = 1
-    # Filter transition band, ramping down from fmax to fpmax
-    rdo_mask = ((freq >= fmax) & (freq <= fpmax))
-    H[rdo_mask] = np.cos(0.5 * np.pi * (freq[rdo_mask] - fmax) / (fmax - fpmax))
+    # Filter transition band, ramping up from fpmin to fmin, replaced by butterworth filter
+    # rup_mask = ((freq >= fpmin) & (freq <= fmin))
+    # H[rup_mask] = np.sin(0.5 * np.pi * (freq[rup_mask] - fpmin) / (fmin - fpmin))
+    # # Filter passband
+    # H[(freq >= fmin) & (freq <= fmax)] = 1
+    # # Filter transition band, ramping down from fmax to fpmax
+    # rdo_mask = ((freq >= fmax) & (freq <= fpmax))
+    # H[rdo_mask] = np.cos(0.5 * np.pi * (freq[rdo_mask] - fmax) / (fmax - fpmax))
 
     # Replicate the bandpass frequency response along the k-axis to initialize the filter
     fk_filter_matrix = np.tile(H, (len(knum), 1))
-    
+
     # 2nd step: filtering waves whose speeds are below cmin, with a taper between csmin and cpmin
     # Going through frequencies between the considered range of the bandpass filter
     for i in range(fmin_idx, fmax_idx):
@@ -342,25 +378,25 @@ def hybrid_ninf_filter_design(trace_shape, selected_channels, dx, fs, cs_min=140
         filter_col = np.zeros_like(knum)
 
         # Filter transition bands, ramping up from cs_min to cp_min
-        ks_min = freq[i] / cs_min
-        kp_min = freq[i] / cp_min
+        ks_min = freq[i] / cs_max
+        kp_min = freq[i] / cp_max
 
-        ks_max = freq[i] / cs_max
-        kp_max = freq[i] / cp_max
+        ks_max = freq[i] / cs_min
+        kp_max = freq[i] / cp_min
         
         # Avoid zero division
         if ks_min != kp_min:
             # f+ k+ quadrant ramp up                                         
-            selected_k_mask = ((knum >= -ks_min) & (knum <= -kp_min))
-            filter_col[selected_k_mask] = -np.sin(0.5 * np.pi * (knum[selected_k_mask] + ks_min) / (kp_min - ks_min))
+            selected_k_mask = ((knum >= ks_min) & (knum <= kp_min))
+            filter_col[selected_k_mask] = np.sin(0.5 * np.pi * (knum[selected_k_mask] - ks_min) / (kp_min - ks_min))
         if ks_max != kp_max:
-            # f+ k+ quadrant ramp up
-            selected_k_mask = ((knum >= -kp_max) & (knum <= -ks_max))
-            filter_col[selected_k_mask] = np.cos(0.5 * np.pi * (knum[selected_k_mask] + kp_max) / (ks_max - kp_max))
+            # f+ k- quadrant ramp down
+            selected_k_mask = ((knum >= kp_max) & (knum <= ks_max))
+            filter_col[selected_k_mask] = -np.sin(0.5 * np.pi * (knum[selected_k_mask] - ks_max) / (ks_max - kp_max))
 
         # Passband
         # Positive frequencies (kp_min is positive):
-        filter_col[(knum > -kp_min) & (knum < -kp_max)] = 1
+        filter_col[(knum > kp_min) & (knum < kp_max)] = 1
 
         # Fill the filter matrix by multiplication 
         fk_filter_matrix[:, i] *= filter_col 
@@ -373,41 +409,51 @@ def hybrid_ninf_filter_design(trace_shape, selected_channels, dx, fs, cs_min=140
     if display_filter: 
         import matplotlib.pyplot as plt
         import matplotlib.gridspec as gridspec
-        # Change the font sizes for plots (if needed)
-        # plt.rc('font', size=20) 
-        # plt.rc('xtick', labelsize=16)  
-        # plt.rc('ytick', labelsize=16)
 
-        fig = plt.figure(figsize=(18, 10))
-        gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
+        # Context manager for the plot (to avoid changing the global settings)
+        with plt.rc_context():
+            # Change the font sizes for plots (if needed)
+            # plt.rc('font', size=20) 
+            # plt.rc('xtick', labelsize=16)  
+            # plt.rc('ytick', labelsize=16)
 
-        ax1 = plt.subplot(gs[0])
-        ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto')
-        ax1.set_ylabel('k [m$^{-1}$]')
-        ax1.set_xlabel('f [Hz]')
-        
-        ax2 = plt.subplot(gs[2], sharex=ax1)
-        ax2.plot(freq, fk_filter_matrix[len(knum)//2 + 412, :], lw=3)
-        ax2.set_xlabel('f [Hz]')
-        ax2.set_ylabel('Gain []')
-        ax2.set_xlim([min(freq), max(freq)])
-        ax2.grid()
+            fig = plt.figure(figsize=(18, 10))
+            gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
 
-        ax3 = plt.subplot(gs[1], sharey=ax1)
-        ax3.plot(fk_filter_matrix[:, fmin_idx + 500], knum, lw=3)
-        ax3.set_xlabel('Gain []')
-        ax3.set_ylabel('k [m$^{-1}$]')
-        ax3.yaxis.set_label_position("right")
-        ax3.set_ylim([min(knum), max(knum)])
-        ax3.invert_xaxis()
-        ax3.yaxis.tick_right()
-        ax3.grid()
-        plt.tight_layout()
-        plt.show()
+            # Matrix display
+            ax1 = plt.subplot(gs[0])
+            ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto', origin='lower')
+            ax1.hlines(knum[len(knum)//2 + 420], min(freq), max(freq), color='tab:orange', lw=2, ls=':')
+            ax1.vlines(freq[len(freq)//2 + 1500], min(knum), max(knum), color='tab:blue', lw=2, ls=':')
+            # colorbar
+            # cbar = plt.colorbar(ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto', origin='lower'))
+            ax1.set_ylabel('k [m$^{-1}$]')
+            ax1.set_xlabel('f [Hz]')
+            
+            # Frequency slice display
+            ax2 = plt.subplot(gs[2], sharex=ax1)
+            ax2.plot(freq, fk_filter_matrix[len(knum)//2 + 420, :], lw=3, color='tab:orange')
+            ax2.set_xlabel('f [Hz]')
+            ax2.set_ylabel('Gain []')
+            ax2.set_xlim([min(freq), max(freq)])
+            ax2.grid()
 
+            # Wavenumber slice display
+            ax3 = plt.subplot(gs[1], sharey=ax1)
+            ax3.plot(fk_filter_matrix[:, len(freq)//2 + 1500], knum, lw=3, color='tab:blue')
+            ax3.set_xlabel('Gain []')
+            ax3.set_ylabel('k [m$^{-1}$]')
+            ax3.yaxis.set_label_position("right")
+            ax3.set_ylim([min(knum), max(knum)])
+            ax3.invert_xaxis()
+            ax3.yaxis.tick_right()
+            ax3.grid()
+            plt.tight_layout()
+            plt.show()
+            
     return sparse.COO.from_numpy(fk_filter_matrix)
 
-
+# Infinite wave speed filter, gaussian tapers
 def hybrid_gs_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400., cp_min=1450., fmin=15., fmax=25., display_filter=False):
     """Designs a bandpass f-k hybrid filter for DAS strain data
         Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)
@@ -497,41 +543,42 @@ def hybrid_gs_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400.
     if display_filter: 
         import matplotlib.pyplot as plt
         import matplotlib.gridspec as gridspec
-        # Change the font sizes for plots (if needed)
-        # plt.rc('font', size=20) 
-        # plt.rc('xtick', labelsize=16)  
-        # plt.rc('ytick', labelsize=16)
+        with plt.rc_context():
+            # Change the font sizes for plots (if needed)
+            # plt.rc('font', size=20) 
+            # plt.rc('xtick', labelsize=16)  
+            # plt.rc('ytick', labelsize=16)
 
-        fig = plt.figure(figsize=(18, 10))
-        gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
+            fig = plt.figure(figsize=(18, 10))
+            gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
 
-        ax1 = plt.subplot(gs[0])
-        ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto')
-        ax1.set_ylabel('k [m$^{-1}$]')
-        ax1.set_xlabel('f [Hz]')
-        
-        ax2 = plt.subplot(gs[2], sharex=ax1)
-        ax2.plot(freq, fk_filter_matrix[len(knum)//2, :], lw=3)
-        ax2.set_xlabel('f [Hz]')
-        ax2.set_ylabel('Gain []')
-        ax2.set_xlim([min(freq), max(freq)])
-        ax2.grid()
+            ax1 = plt.subplot(gs[0])
+            ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto')
+            ax1.set_ylabel('k [m$^{-1}$]')
+            ax1.set_xlabel('f [Hz]')
+            
+            ax2 = plt.subplot(gs[2], sharex=ax1)
+            ax2.plot(freq, fk_filter_matrix[len(knum)//2, :], lw=3)
+            ax2.set_xlabel('f [Hz]')
+            ax2.set_ylabel('Gain []')
+            ax2.set_xlim([min(freq), max(freq)])
+            ax2.grid()
 
-        ax3 = plt.subplot(gs[1], sharey=ax1)
-        ax3.plot(fk_filter_matrix[:, fmin_idx + 250], knum, lw=3)
-        ax3.set_xlabel('Gain []')
-        ax3.set_ylabel('k [m$^{-1}$]')
-        ax3.yaxis.set_label_position("right")
-        ax3.set_ylim([min(knum), max(knum)])
-        ax3.invert_xaxis()
-        ax3.yaxis.tick_right()
-        ax3.grid()
-        plt.tight_layout()
-        plt.show()
+            ax3 = plt.subplot(gs[1], sharey=ax1)
+            ax3.plot(fk_filter_matrix[:, fmin_idx + 250], knum, lw=3)
+            ax3.set_xlabel('Gain []')
+            ax3.set_ylabel('k [m$^{-1}$]')
+            ax3.yaxis.set_label_position("right")
+            ax3.set_ylim([min(knum), max(knum)])
+            ax3.invert_xaxis()
+            ax3.yaxis.tick_right()
+            ax3.grid()
+            plt.tight_layout()
+            plt.show()
 
     return sparse.COO.from_numpy(fk_filter_matrix)
 
-
+# Non-infinite wave speed filter, gaussian tapers
 def hybrid_ninf_gs_filter_design(trace_shape, selected_channels, dx, fs, cs_min=1400., cp_min=1450., cp_max=3400, cs_max=3500, fmin=15., fmax=25., display_filter=False):
     """Designs a bandpass f-k hybrid filter for DAS strain data
         Keeps by default data with propagation speed above 1450 m/s between [15 - 25] Hz (designed for fin whales)
@@ -617,37 +664,40 @@ def hybrid_ninf_gs_filter_design(trace_shape, selected_channels, dx, fs, cs_min=
     if display_filter: 
         import matplotlib.pyplot as plt
         import matplotlib.gridspec as gridspec
-        # Change the font sizes for plots (if needed)
-        # plt.rc('font', size=20) 
-        # plt.rc('xtick', labelsize=16)  
-        # plt.rc('ytick', labelsize=16)
 
-        fig = plt.figure(figsize=(18, 10))
-        gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
+        # Context manager for the plot (to avoid changing the global settings)
+        with plt.rc_context():
+            # Change the font sizes for plots (if needed)
+            # plt.rc('font', size=20) 
+            # plt.rc('xtick', labelsize=16)  
+            # plt.rc('ytick', labelsize=16)
 
-        ax1 = plt.subplot(gs[0])
-        ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto')
-        ax1.set_ylabel('k [m$^{-1}$]')
-        ax1.set_xlabel('f [Hz]')
-        
-        ax2 = plt.subplot(gs[2], sharex=ax1)
-        ax2.plot(freq, fk_filter_matrix[len(knum)//2 -50, :], lw=3)
-        ax2.set_xlabel('f [Hz]')
-        ax2.set_ylabel('Gain []')
-        ax2.set_xlim([min(freq), max(freq)])
-        ax2.grid()
+            fig = plt.figure(figsize=(18, 10))
+            gs = gridspec.GridSpec(2, 2, width_ratios=[5, 1], height_ratios=[6, 2])
 
-        ax3 = plt.subplot(gs[1], sharey=ax1)
-        ax3.plot(fk_filter_matrix[:, fmin_idx + 500], knum, lw=3)
-        ax3.set_xlabel('Gain []')
-        ax3.set_ylabel('k [m$^{-1}$]')
-        ax3.yaxis.set_label_position("right")
-        ax3.set_ylim([min(knum), max(knum)])
-        ax3.invert_xaxis()
-        ax3.yaxis.tick_right()
-        ax3.grid()
-        plt.tight_layout()
-        plt.show()
+            ax1 = plt.subplot(gs[0])
+            ax1.imshow(fk_filter_matrix, extent=[min(freq), max(freq), min(knum), max(knum)], aspect='auto')
+            ax1.set_ylabel('k [m$^{-1}$]')
+            ax1.set_xlabel('f [Hz]')
+            
+            ax2 = plt.subplot(gs[2], sharex=ax1)
+            ax2.plot(freq, fk_filter_matrix[len(knum)//2 -50, :], lw=3)
+            ax2.set_xlabel('f [Hz]')
+            ax2.set_ylabel('Gain []')
+            ax2.set_xlim([min(freq), max(freq)])
+            ax2.grid()
+
+            ax3 = plt.subplot(gs[1], sharey=ax1)
+            ax3.plot(fk_filter_matrix[:, fmin_idx + 500], knum, lw=3)
+            ax3.set_xlabel('Gain []')
+            ax3.set_ylabel('k [m$^{-1}$]')
+            ax3.yaxis.set_label_position("right")
+            ax3.set_ylim([min(knum), max(knum)])
+            ax3.invert_xaxis()
+            ax3.yaxis.tick_right()
+            ax3.grid()
+            plt.tight_layout()
+            plt.show()
 
     return sparse.COO.from_numpy(fk_filter_matrix)
 
@@ -656,11 +706,15 @@ def taper_data(trace):
     """
     Apply a Tukey window to each line (time series) of the input matrix.
 
-    Parameters:
-    - matrix: 2D numpy array, where each column represents a time series.
+    Parameters
+    ----------
+    trace : np.ndarray
+        2D numpy array, where each column represents a time series.
 
-    Returns:
-    - Tapered matrix with the same shape as the input.
+    Returns
+    -------
+    np.ndarray
+        Tapered matrix with the same shape as the input.
     """
     nt = trace.shape[1]
     # Change alpha to increase the tapering ratio
@@ -670,17 +724,23 @@ def taper_data(trace):
 
 def fk_filter_filt(trace, fk_filter_matrix, tapering=False):
     """
-    Applies a pre-calculated f-k filter to DAS strain data
+    Applies a pre-calculated f-k filter to DAS strain data.
 
-    Inputs:
-    :param trace: a [channel x time sample] nparray containing the strain data in the spatio-temporal domain
-    :param fk_filter_matrix: a [channel x time sample] nparray containing the f-k-filter
+    Parameters
+    ----------
+    trace : np.ndarray
+        A [channel x time sample] nparray containing the strain data in the spatio-temporal domain.
+    fk_filter_matrix : np.ndarray
+        A [channel x time sample] nparray containing the f-k-filter.
+    tapering : bool, optional
+        Flag indicating whether to apply tapering to the data. Default is False.
 
-    Outputs:
-    :return: trace, a [channel x time sample] nparray containing the f-k-filtered strain data in the spatio-temporal
-    domain
-
+    Returns
+    -------
+    np.ndarray
+        A [channel x time sample] nparray containing the f-k-filtered strain data in the spatio-temporal domain.
     """
+
     if tapering:
         trace = taper_data(trace)
 
@@ -689,6 +749,7 @@ def fk_filter_filt(trace, fk_filter_matrix, tapering=False):
 
     # Apply the filter
     fk_filtered_trace = fk_trace * fk_filter_matrix
+
     # Back to the t-x domain
     trace = np.fft.ifft2(np.fft.ifftshift(fk_filtered_trace))
 
@@ -699,14 +760,17 @@ def fk_filter_sparsefilt(trace, fk_filter_matrix, tapering=False):
     """
     Applies a pre-calculated f-k filter to DAS strain data
 
-    Inputs:
-    :param trace: a [channel x time sample] nparray containing the strain data in the spatio-temporal domain
-    :param fk_filter_matrix: a [channel x time sample] nparray containing the f-k-filter
+    Parameters
+    ----------
+    trace : np.ndarray
+        A [channel x time sample] nparray containing the strain data in the spatio-temporal domain.
+    fk_filter_matrix : np.ndarray
+        A [channel x time sample] nparray containing the f-k-filter.
 
-    Outputs:
-    :return: trace, a [channel x time sample] nparray containing the f-k-filtered strain data in the spatio-temporal
-    domain
-
+    Returns
+    -------
+    np.ndarray
+        A [channel x time sample] nparray containing the f-k-filtered strain data in the spatio-temporal domain.
     """
     if tapering:
         trace = taper_data(trace)
@@ -724,19 +788,34 @@ def fk_filter_sparsefilt(trace, fk_filter_matrix, tapering=False):
 
 def butterworth_filter(filterspec, fs):
     """
-    Designs and a butterworth filter see:
-    https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.butter.html
+    Designs and applies a Butterworth filter.
 
-    Apply as.
+    Parameters:
+    ----------
+    filterspec : tuple
+        A tuple containing the filter order, critical frequency, and filter type.
+    fs : float
+        The sampling frequency.
+
+    Returns:
+    -------
+    filter_sos : np.ndarray
+        The second-order sections (SOS) representation of the Butterworth filter.
+
+    Notes:
+    ------
+    The Butterworth filter is designed using the scipy.signal.butter function.
+
+    Example:
+    --------
+    filter_order = 4
+    filter_critical_freq = 1000
+    filter_type_str = 'lowpass'
+    filterspec = (filter_order, filter_critical_freq, filter_type_str)
+    fs = 44100
+
+    filter_sos = butterworth_filter(filterspec, fs)
     trace_filtered = sp.sosfiltfilt(filter_sos, trace_original, axis=1)
-
-    Inputs:
-    :param filterspec:
-    :param fs:
-
-    Outputs:
-    :return: filter_sos: a butterworth filter
-
     """
 
     filter_order, filter_critical_freq, filter_type_str = filterspec
@@ -753,14 +832,14 @@ def instant_freq(channel, fs):
 
     Parameters
     ----------
-    channel : numpy.ndarray
+    channel : np.ndarray
         1D time series channel trace
     fs : float
         sampling frequency
 
     Returns
     -------
-    numpy.ndarray
+    np.ndarray
         instantaneous frequency along time[1:]
     """    
     # Compute the instantaneous frequency
@@ -778,8 +857,26 @@ def instant_freq(channel, fs):
 
 
 def bp_filt(data,fs,fmin,fmax):
-    b, a = sp.butter(8,[fmin/(fs/2),fmax/(fs/2)],'bp')
-    tr_filt = sp.filtfilt(b,a,data,axis = 1)
+    """bp_filt - perform bandpass filtering on an array of DAS data
+
+    Parameters
+    ----------
+    data : array-like
+        array containing wave signal from DAS data
+    fs : float
+        sampling frequency
+    fmin : float    
+        minimum frequency for the passband
+    fmax : float
+        maximum frequency for the passband
+
+    Returns
+    -------
+    tr_filt : array-like
+        bandpass filtered data
+    """
+    b, a = sp.butter(8, [fmin/(fs/2), fmax/(fs/2)], 'bp')
+    tr_filt = sp.filtfilt(b, a, data, axis=1)
     return tr_filt
 
 

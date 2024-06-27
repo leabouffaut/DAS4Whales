@@ -26,6 +26,7 @@ classifiers = [
 dependencies = [
     "DateTime",
     "h5py",
+    "nptdms",
     "librosa",
     "matplotlib",
     "numpy",
@@ -40,7 +41,8 @@ dependencies = [
     "opencv-python",
     "scikit-image",
     "opencv-python",
-    "torchvision"
+    "torchvision",
+    "numpydoc"
 ]
 
 [project.urls]
@@ -52,5 +54,14 @@ path = "src/das4whales/__init__.py"
 [tool.hatch.build.targets.sdist]
 include = [
     "src/das4whales/",
+]
+
+[project.optional-dependencies]
+docs = [
+  "furo",
+  "myst_parser >=0.13",
+  "sphinx >=4.0",
+  "sphinx-copybutton",
+  "sphinx-autodoc-typehints",
 ]
 
